@@ -7,16 +7,19 @@ permissions:
   contents: read
 jobs:
   verify:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        go: ['stable']
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: ${{ matrix.go }}
+          go-version: stable
           cache: true
-      - run: go build ./...
-      - run: go vet ./...
-      - run: go test ./...
+      - name: Build
+        shell: bash
+        run: go build ./...
+      - name: Vet
+        shell: bash
+        run: go vet ./...
+      - name: Test
+        shell: bash
+        run: go test ./...
