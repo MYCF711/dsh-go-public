@@ -1,0 +1,19 @@
+{
+  "canonicalMethodsUnchanged": 25,
+  "methods": {
+    "attachment.put": {
+      "params": ["path"],
+      "result": ["attachment"],
+      "authorization": "explicit absolute local path grants this read; regular non-empty file only"
+    },
+    "attachment.get": {
+      "params": ["id|attachmentId"],
+      "result": ["attachment", "dataBase64"]
+    }
+  },
+  "attachment": ["id", "name", "byteSize", "mime", "sha256", "width?", "height?"],
+  "contentBlock": ["type", "text?", "attachmentId?", "name?", "byteSize?", "mime?", "sha256?", "width?", "height?", "referenceId?", "referenceType?", "path?", "sessionId?"],
+  "prompt": "content is ordered text/attachment/reference; legacy text-only request is unchanged",
+  "durable": "user/message content preserves block order and IDs in load/history/restart; legacy pure text omits Message.content",
+  "error": ["code", "message", "hint", "retryable"]
+}

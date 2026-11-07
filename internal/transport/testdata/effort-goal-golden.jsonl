@@ -1,0 +1,5 @@
+{"seq":1,"type":"goal/change","data":{"kind":"goal/change","version":1,"operation":"create","goal":{"id":"goal-native-a","revision":1,"objective":"finish the adapter","phase":"active","maxGoalRounds":0},"roundsStarted":0},"time":1001}
+{"seq":2,"type":"goal/change","data":{"kind":"goal/change","version":1,"operation":"edit","goal":{"id":"goal-native-a","revision":2,"objective":"finish and verify the adapter","phase":"active","maxGoalRounds":0},"roundsStarted":0},"time":1002}
+{"seq":3,"type":"goal/change","data":{"kind":"goal/change","version":1,"operation":"pause","goal":{"id":"goal-native-a","revision":3,"objective":"finish and verify the adapter","phase":"paused","maxGoalRounds":0},"roundsStarted":0},"time":1003}
+{"seq":4,"type":"goal/change","data":{"kind":"goal/change","version":1,"operation":"resume","goal":{"id":"goal-native-a","revision":4,"objective":"finish and verify the adapter","phase":"active","maxGoalRounds":0},"roundsStarted":0},"time":1004}
+{"seq":5,"type":"goal/change","data":{"kind":"goal/change","version":1,"operation":"clear","roundsStarted":0},"time":1005}

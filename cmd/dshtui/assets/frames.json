@@ -1,0 +1,614 @@
+{
+  "schema_version": 1,
+  "upstream": {
+    "repository": "https://github.com/ccch1mneyyy/dsh-TUI",
+    "commit": "1bd7cb515b4c6fb52f049f7bde521df48ee2f54b",
+    "license": "MIT",
+    "sources": {
+      "whaleFrames": {
+        "path": "src/components/whaleFrames.ts",
+        "url": "https://github.com/ccch1mneyyy/dsh-TUI/blob/1bd7cb515b4c6fb52f049f7bde521df48ee2f54b/src/components/whaleFrames.ts",
+        "sha256": "579ff09b132864b9a9a7c7c3e38ef445b77850d9e3f7674eeabf34444c4c3b3c"
+      },
+      "whaleLayers": {
+        "path": "src/components/whaleLayers.ts",
+        "url": "https://github.com/ccch1mneyyy/dsh-TUI/blob/1bd7cb515b4c6fb52f049f7bde521df48ee2f54b/src/components/whaleLayers.ts",
+        "sha256": "be2dda03c6fea8f85a1bb824e1022380b76758987010fe9ce7ab3f6802afddb6"
+      },
+      "whaleIdle": {
+        "path": "src/components/whaleIdle.ts",
+        "url": "https://github.com/ccch1mneyyy/dsh-TUI/blob/1bd7cb515b4c6fb52f049f7bde521df48ee2f54b/src/components/whaleIdle.ts",
+        "sha256": "9310e69833d2abb8c18cd6ba6319d29d60835abe9f0616a4ee355725a8f72368"
+      }
+    }
+  },
+  "sprite": {
+    "width": 40,
+    "height": 25,
+    "alphabet": ".DBLWHZ",
+    "encoding": "ASCII",
+    "line_endings": "LF",
+    "trailing_newline": true,
+    "sha256_scope": "SHA-256 of the extracted file bytes: 25 rows joined by LF plus one trailing LF"
+  },
+  "frames": [
+    {
+      "index": 0,
+      "name": "standard",
+      "file": "whale/standard.txt",
+      "source_line": 26,
+      "sha256": "4b5c9ca7c886a331160d4b5bd584b55fe5c49ea294799132db1610961a6e5b4c"
+    },
+    {
+      "index": 1,
+      "name": "blink",
+      "file": "whale/blink.txt",
+      "source_line": 56,
+      "sha256": "dcf43183424a374171a084974acbab2fc1ad606615c139d1d8d246167ae3b14f"
+    },
+    {
+      "index": 2,
+      "name": "fin1",
+      "file": "whale/fin1.txt",
+      "source_line": 86,
+      "sha256": "c501d56a336d27e90fa463321497a1c5c1268123d4383987234902be2cf358ce"
+    },
+    {
+      "index": 3,
+      "name": "fin2",
+      "file": "whale/fin2.txt",
+      "source_line": 116,
+      "sha256": "0f12dba5278d6a2bfe7c68374be3ab1a27be19164a67d587f5a8ad86b4aba32d"
+    },
+    {
+      "index": 4,
+      "name": "spout1",
+      "file": "whale/spout1.txt",
+      "source_line": 146,
+      "sha256": "af35a6e8be1b8abecbb888834b466ae52cb3c9a7ebf32e41c7e37cbf8cf4fb70"
+    },
+    {
+      "index": 5,
+      "name": "spout2",
+      "file": "whale/spout2.txt",
+      "source_line": 176,
+      "sha256": "507e1150d3324a9fcedba32a2a5274582037dec8fc4c626187d9fbdd8dfe9a76"
+    },
+    {
+      "index": 6,
+      "name": "spout3",
+      "file": "whale/spout3.txt",
+      "source_line": 206,
+      "sha256": "0d6d262dbd0527f2a9d2cfec63e31dac48a4e2cfc1be73f3acb34352f5c079bd"
+    },
+    {
+      "index": 7,
+      "name": "spout4",
+      "file": "whale/spout4.txt",
+      "source_line": 236,
+      "sha256": "6390dfc6f3acff009dfc7d3d971372f87c44456b3a52feba5b7dfc42b38c6ce4"
+    },
+    {
+      "index": 8,
+      "name": "spout5",
+      "file": "whale/spout5.txt",
+      "source_line": 266,
+      "sha256": "2216ca984fe3c6d69564d496a4b203d623474bc1132d05ea3f139bb70bdbeed7"
+    },
+    {
+      "index": 9,
+      "name": "spout6",
+      "file": "whale/spout6.txt",
+      "source_line": 296,
+      "sha256": "6cd52fee2f7f9b66f9552533058082c99ca730c37a0022c67fc2a49e1400c805"
+    },
+    {
+      "index": 10,
+      "name": "tail1",
+      "file": "whale/tail1.txt",
+      "source_line": 326,
+      "sha256": "f40a5a89db83a9a1df997c72de365c2cc00bb746cdb9f9c93b0d7ad2689bda43"
+    },
+    {
+      "index": 11,
+      "name": "tail2",
+      "file": "whale/tail2.txt",
+      "source_line": 356,
+      "sha256": "df7687f5743ba2111610388b71646d4c604c1c3eca5933b83bf7d47e06d357dc"
+    },
+    {
+      "index": 12,
+      "name": "tail3",
+      "file": "whale/tail3.txt",
+      "source_line": 386,
+      "sha256": "3bf9607f212ad84661ba9942f40da8a61de7a03b67a73ece3165c21d675dc399"
+    },
+    {
+      "index": 13,
+      "name": "tail4",
+      "file": "whale/tail4.txt",
+      "source_line": 416,
+      "sha256": "a5537e8cc94d6ed6409cd1a65eb95a67970e4a1a641d322375d86779aeaf3722"
+    },
+    {
+      "index": 14,
+      "name": "heart1",
+      "file": "whale/heart1.txt",
+      "source_line": 446,
+      "sha256": "fc2881b5ce1c3dc9d88464974a9c19b119dfd779f5ead713a05c5c3b99d21a63"
+    },
+    {
+      "index": 15,
+      "name": "heart2",
+      "file": "whale/heart2.txt",
+      "source_line": 476,
+      "sha256": "befccf680afe38cede1ef0eecdd0d703020fef55e3a40c95f8db11bb71120e07"
+    },
+    {
+      "index": 16,
+      "name": "heart3",
+      "file": "whale/heart3.txt",
+      "source_line": 506,
+      "sha256": "c07d9a64b9618ad42bb5969062d3b6e7659566ca515e6f92a7e0388dd14e9566"
+    },
+    {
+      "index": 17,
+      "name": "sleep1",
+      "file": "whale/sleep1.txt",
+      "source_line": 536,
+      "sha256": "abb86141f42b86e679f2907df468f296f6e5334b60920d26d6e48623fe24eea9"
+    },
+    {
+      "index": 18,
+      "name": "sleep2",
+      "file": "whale/sleep2.txt",
+      "source_line": 566,
+      "sha256": "d2963f02eb36be02ce28717c2e45baf15392a663a99f3ab5fa6fabe95ce38898"
+    },
+    {
+      "index": 19,
+      "name": "sleep3",
+      "file": "whale/sleep3.txt",
+      "source_line": 596,
+      "sha256": "b17e1047e7d9b85947eafb15548d6064ef0d9f65a8219ae38535d5bff4f432a4"
+    },
+    {
+      "index": 20,
+      "name": "sleep4",
+      "file": "whale/sleep4.txt",
+      "source_line": 626,
+      "sha256": "ff2c7a8ba4eb41a647ed882189e662316e9d1ff7f9b1ebfc733e4e8667e36b21"
+    },
+    {
+      "index": 21,
+      "name": "sleep5",
+      "file": "whale/sleep5.txt",
+      "source_line": 656,
+      "sha256": "4d481a1ddea83e58b972b49ad07d4037530684267c50f872851cebfe5aef7a35"
+    }
+  ],
+  "opening": {
+    "source_symbol": "OPENING_SEQUENCES",
+    "selection": {
+      "ids": [
+        "classic",
+        "heart",
+        "sleep"
+      ],
+      "strategy": "uniform random on each logo header mount and /deepseek replay"
+    },
+    "loop": false,
+    "sequences": {
+      "classic": {
+        "loop": false,
+        "settle_frame": "standard",
+        "total_ms": 3480,
+        "steps": [
+          {
+            "step": 0,
+            "frame_index": 0,
+            "frame": "standard",
+            "ms": 400
+          },
+          {
+            "step": 1,
+            "frame_index": 1,
+            "frame": "blink",
+            "ms": 250
+          },
+          {
+            "step": 2,
+            "frame_index": 0,
+            "frame": "standard",
+            "ms": 300
+          },
+          {
+            "step": 3,
+            "frame_index": 4,
+            "frame": "spout1",
+            "ms": 150
+          },
+          {
+            "step": 4,
+            "frame_index": 5,
+            "frame": "spout2",
+            "ms": 150
+          },
+          {
+            "step": 5,
+            "frame_index": 6,
+            "frame": "spout3",
+            "ms": 150
+          },
+          {
+            "step": 6,
+            "frame_index": 7,
+            "frame": "spout4",
+            "ms": 150
+          },
+          {
+            "step": 7,
+            "frame_index": 8,
+            "frame": "spout5",
+            "ms": 150
+          },
+          {
+            "step": 8,
+            "frame_index": 9,
+            "frame": "spout6",
+            "ms": 150
+          },
+          {
+            "step": 9,
+            "frame_index": 0,
+            "frame": "standard",
+            "ms": 250
+          },
+          {
+            "step": 10,
+            "frame_index": 10,
+            "frame": "tail1",
+            "ms": 150
+          },
+          {
+            "step": 11,
+            "frame_index": 11,
+            "frame": "tail2",
+            "ms": 150
+          },
+          {
+            "step": 12,
+            "frame_index": 12,
+            "frame": "tail3",
+            "ms": 150
+          },
+          {
+            "step": 13,
+            "frame_index": 13,
+            "frame": "tail4",
+            "ms": 180
+          },
+          {
+            "step": 14,
+            "frame_index": 12,
+            "frame": "tail3",
+            "ms": 150
+          },
+          {
+            "step": 15,
+            "frame_index": 11,
+            "frame": "tail2",
+            "ms": 150
+          },
+          {
+            "step": 16,
+            "frame_index": 10,
+            "frame": "tail1",
+            "ms": 150
+          },
+          {
+            "step": 17,
+            "frame_index": 0,
+            "frame": "standard",
+            "ms": 300
+          }
+        ]
+      },
+      "heart": {
+        "loop": false,
+        "settle_frame": "standard",
+        "total_ms": 2750,
+        "steps": [
+          {
+            "step": 0,
+            "frame_index": 0,
+            "frame": "standard",
+            "ms": 400
+          },
+          {
+            "step": 1,
+            "frame_index": 14,
+            "frame": "heart1",
+            "ms": 350
+          },
+          {
+            "step": 2,
+            "frame_index": 15,
+            "frame": "heart2",
+            "ms": 350
+          },
+          {
+            "step": 3,
+            "frame_index": 16,
+            "frame": "heart3",
+            "ms": 450
+          },
+          {
+            "step": 4,
+            "frame_index": 15,
+            "frame": "heart2",
+            "ms": 350
+          },
+          {
+            "step": 5,
+            "frame_index": 14,
+            "frame": "heart1",
+            "ms": 350
+          },
+          {
+            "step": 6,
+            "frame_index": 0,
+            "frame": "standard",
+            "ms": 500
+          }
+        ]
+      },
+      "sleep": {
+        "loop": false,
+        "settle_frame": "standard",
+        "total_ms": 3100,
+        "steps": [
+          {
+            "step": 0,
+            "frame_index": 0,
+            "frame": "standard",
+            "ms": 400
+          },
+          {
+            "step": 1,
+            "frame_index": 17,
+            "frame": "sleep1",
+            "ms": 250
+          },
+          {
+            "step": 2,
+            "frame_index": 18,
+            "frame": "sleep2",
+            "ms": 250
+          },
+          {
+            "step": 3,
+            "frame_index": 19,
+            "frame": "sleep3",
+            "ms": 250
+          },
+          {
+            "step": 4,
+            "frame_index": 20,
+            "frame": "sleep4",
+            "ms": 250
+          },
+          {
+            "step": 5,
+            "frame_index": 21,
+            "frame": "sleep5",
+            "ms": 300
+          },
+          {
+            "step": 6,
+            "frame_index": 20,
+            "frame": "sleep4",
+            "ms": 250
+          },
+          {
+            "step": 7,
+            "frame_index": 19,
+            "frame": "sleep3",
+            "ms": 250
+          },
+          {
+            "step": 8,
+            "frame_index": 18,
+            "frame": "sleep2",
+            "ms": 250
+          },
+          {
+            "step": 9,
+            "frame_index": 17,
+            "frame": "sleep1",
+            "ms": 250
+          },
+          {
+            "step": 10,
+            "frame_index": 0,
+            "frame": "standard",
+            "ms": 400
+          }
+        ]
+      }
+    }
+  },
+  "idle": {
+    "source_symbols": [
+      "whaleIdle.nextWhaleIdleStep",
+      "whaleLayers.composeWhaleGrid"
+    ],
+    "tick_ms": 120,
+    "composition": "independent layers; a click heart and blink overlay body poses; spout stays at layer 0",
+    "layer_paint_order": [
+      "eyes",
+      "tail",
+      "fin",
+      "spout",
+      "heart",
+      "sleep"
+    ],
+    "minimum_scheduler_delay_ms": 16,
+    "resting_pose": {
+      "tail": 0,
+      "fin": 0,
+      "spout": 0,
+      "heart": 0,
+      "sleep": 0,
+      "blink": false
+    },
+    "layer_frame_maps": {
+      "tail": [
+        "standard",
+        "tail1",
+        "tail2",
+        "tail3",
+        "tail4"
+      ],
+      "fin": [
+        "standard",
+        "fin1",
+        "fin2"
+      ],
+      "spout": [
+        "standard",
+        "spout1",
+        "spout2",
+        "spout3",
+        "spout4",
+        "spout5",
+        "spout6"
+      ],
+      "heart": [
+        "standard",
+        "heart1",
+        "heart2",
+        "heart3"
+      ],
+      "sleep": [
+        "standard",
+        "sleep1",
+        "sleep2",
+        "sleep3",
+        "sleep4",
+        "sleep5"
+      ],
+      "eyes": {
+        "awake": "standard",
+        "blink": "blink"
+      }
+    },
+    "layers": {
+      "tail": {
+        "frame_order": [
+          "tail1",
+          "tail2",
+          "tail3",
+          "tail4",
+          "tail3",
+          "tail2",
+          "tail1"
+        ],
+        "working": {
+          "mode": "continuous",
+          "hold_ms": 240,
+          "loop": true
+        },
+        "idle": {
+          "mode": "occasional pass then layer 0",
+          "hold_ms": 360,
+          "gap_ms": 3000,
+          "loop": false,
+          "passes_repeat": true
+        },
+        "asleep": "same cadence as idle"
+      },
+      "fin": {
+        "frame_order": [
+          "fin1",
+          "fin2",
+          "fin1"
+        ],
+        "working": {
+          "mode": "continuous",
+          "hold_ms": 240,
+          "loop": true
+        },
+        "idle": {
+          "mode": "occasional pass then layer 0",
+          "hold_ms": 240,
+          "gap_ms": 1920,
+          "loop": false,
+          "passes_repeat": true
+        },
+        "asleep": "same cadence as idle"
+      },
+      "spout": {
+        "idle_layer": 0,
+        "frames": [],
+        "loop": false
+      },
+      "heart": {
+        "trigger": "heart/click input; retrigger restarts at heart1 and wakes sleep",
+        "frame_order": [
+          "heart1",
+          "heart2",
+          "heart3"
+        ],
+        "hold_ms": 360,
+        "loop": false,
+        "returns_to_layer": 0,
+        "overlays_other_layers": true
+      },
+      "sleep": {
+        "inactivity_delay_ms": 10000,
+        "entry": {
+          "layer": 0,
+          "frame": "standard",
+          "hold_ms": 360
+        },
+        "frame_order": [
+          "sleep1",
+          "sleep2",
+          "sleep3",
+          "sleep4",
+          "sleep5"
+        ],
+        "hold_ms": 360,
+        "loop": true,
+        "wrap": "sleep5 -> sleep1; never wraps to standard",
+        "sticky_while_idle": true,
+        "clear_on": [
+          "working",
+          "heart/click"
+        ]
+      },
+      "blink": {
+        "frame_order": [
+          "blink"
+        ],
+        "hold_ms": 120,
+        "gap_ms": {
+          "working": 1680,
+          "idle": 5040
+        },
+        "loop": true,
+        "overlays_other_layers": true
+      }
+    }
+  },
+  "legacy_whale_standard": {
+    "file": "whale_standard.txt",
+    "policy": "shared first-screen asset; compare and record only, never overwrite",
+    "actual_sha256": "4b5c9ca7c886a331160d4b5bd584b55fe5c49ea294799132db1610961a6e5b4c",
+    "upstream_frame": "standard",
+    "upstream_sha256": "4b5c9ca7c886a331160d4b5bd584b55fe5c49ea294799132db1610961a6e5b4c",
+    "matches_upstream": true,
+    "difference_coordinates": []
+  }
+}

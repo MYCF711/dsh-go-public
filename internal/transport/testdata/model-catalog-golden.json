@@ -1,0 +1,89 @@
+{
+  "schema": "dshgo.model-catalog.golden@1",
+  "accepted": [
+    {
+      "name": "upsert full model A",
+      "method": "models.catalog.upsert",
+      "params": {
+        "model": {
+          "id": "model-a",
+          "name": "Alpha",
+          "owned_by": "local",
+          "api": "openai-completions",
+          "baseURL": "{{BASE_URL}}",
+          "apiKeyEnv": "LOCAL_MODEL_CATALOG_KEY",
+          "contextWindow": 128000,
+          "maxTokens": 8192,
+          "input": ["text", "image"],
+          "reasoningEfforts": {"off": null, "low": "low", "custom": "wire-value"},
+          "futureField": {"z": 1, "a": [true, null, "keep"]},
+          "futureScalar": 42
+        },
+        "credential": "catalog-test-secret",
+        "expectedRevision": 0
+      },
+      "status": 200,
+      "revision": 1,
+      "order": ["model-a"]
+    },
+    {
+      "name": "insert model B",
+      "method": "models.catalog.upsert",
+      "params": {
+        "model": {"id": "model-b", "name": "Beta", "api": "openai-completions", "baseURL": "{{BASE_URL}}", "input": [], "futureB": {"preserved": true}},
+        "expectedRevision": 1
+      },
+      "status": 200,
+      "revision": 2,
+      "order": ["model-a", "model-b"]
+    },
+    {
+      "name": "partial update keeps unknown fields",
+      "method": "models.catalog.upsert",
+      "params": {"model": {"id": "model-a", "name": "Alpha Two"}, "expectedRevision": 2},
+      "status": 200,
+      "revision": 3,
+      "order": ["model-a", "model-b"]
+    },
+    {
+      "name": "atomic reorder",
+      "method": "models.catalog.reorder",
+      "params": {"ids": ["model-b", "model-a"], "expectedRevision": 3},
+      "status": 200,
+      "revision": 4,
+      "order": ["model-b", "model-a"]
+    },
+    {
+      "name": "real local test",
+      "method": "models.catalog.test",
+      "params": {"id": "model-a"},
+      "status": 200,
+      "testOK": true,
+      "testModel": "model-a"
+    },
+    {
+      "name": "set active through W61",
+      "method": "models.catalog.set-active",
+      "params": {"id": "model-a", "expectedRevision": 0},
+      "status": 200,
+      "revision": 4,
+      "activeModel": "model-a",
+      "activeRevision": 1
+    }
+  ],
+  "rejected": [
+    {"name": "wrapped params", "method": "models.catalog.list", "params": {"params": {}}, "status": 400, "error": "bad_request"},
+    {"name": "unknown top-level", "method": "models.catalog.list", "params": {"extra": true}, "status": 400, "error": "bad_request"},
+    {"name": "empty id", "method": "models.catalog.upsert", "params": {"model": {"id": ""}}, "status": 400, "error": "invalid_id"},
+    {"name": "illegal field", "method": "models.catalog.upsert", "params": {"model": {"id": "bad", "contextWindow": 0}}, "status": 400, "error": "invalid_field"},
+    {"name": "secret in model", "method": "models.catalog.upsert", "params": {"model": {"id": "bad", "apiKey": "not-returned"}}, "status": 400, "error": "invalid_field"},
+    {"name": "duplicate reorder", "method": "models.catalog.reorder", "params": {"ids": ["model-a", "model-a"], "expectedRevision": 4}, "status": 409, "error": "duplicate_id"},
+    {"name": "empty order", "method": "models.catalog.reorder", "params": {"ids": [], "expectedRevision": 4}, "status": 400, "error": "empty_order"},
+    {"name": "missing reorder id", "method": "models.catalog.reorder", "params": {"ids": ["model-a"], "expectedRevision": 4}, "status": 400, "error": "bad_request"},
+    {"name": "bad test id", "method": "models.catalog.test", "params": {"id": "missing"}, "status": 404, "error": "not_found"},
+    {"name": "bad active id", "method": "models.catalog.set-active", "params": {"id": "missing", "expectedRevision": 1}, "status": 404, "error": "not_found"},
+    {"name": "stale upsert", "method": "models.catalog.upsert", "params": {"model": {"id": "model-c"}, "expectedRevision": 3}, "status": 409, "error": "revision_conflict"},
+    {"name": "stale reorder", "method": "models.catalog.reorder", "params": {"ids": ["model-b", "model-a"], "expectedRevision": 3}, "status": 409, "error": "revision_conflict"},
+    {"name": "stale active", "method": "models.catalog.set-active", "params": {"id": "model-a", "expectedRevision": 0}, "status": 409, "error": "revision_conflict"}
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "dshgo.settings-form.golden@1",
+  "initial": {
+    "permission": { "field": "defaultPreset", "current": "allow", "default": "allow", "overridden": false, "revision": 0 },
+    "model": { "field": "defaultModel", "current": "group/deepseek-v4.1-flash-1017", "default": "group/deepseek-v4.1-flash-1017", "overridden": false, "revision": 0 }
+  },
+  "accepted": [
+    { "method": "settings.form.set", "params": { "ns": "permission", "path": ["defaultPreset"], "value": "deny", "expectedRevision": 0 }, "status": 200, "current": "deny", "revision": 1 },
+    { "method": "settings.mutate", "params": { "ns": "model", "ops": [{ "op": "set", "path": ["defaultModel"], "value": "settings-model-A" }], "expectedRevision": 0 }, "status": 200, "current": "settings-model-A", "revision": 1 },
+    { "method": "settings.form.reset", "params": { "ns": "permission", "expectedRevision": 1 }, "status": 200, "current": "allow", "revision": 2 },
+    { "method": "settings.mutate", "params": { "ns": "model", "ops": [{ "op": "unset", "path": ["defaultModel"] }], "expectedRevision": 1 }, "status": 200, "current": "group/deepseek-v4.1-flash-1017", "revision": 2 }
+  ],
+  "rejected": [
+    { "name": "wrapped params", "method": "settings.form.get", "params": { "params": { "ns": "permission" } }, "status": 400, "error": "bad_request" },
+    { "name": "unknown top-level", "method": "settings.form.get", "params": { "ns": "permission", "extra": true }, "status": 400, "error": "bad_request" },
+    { "name": "unknown namespace", "method": "settings.form.get", "params": { "ns": "missing" }, "status": 404, "error": "not_found" },
+    { "name": "bad enum", "method": "settings.form.set", "params": { "ns": "permission", "path": ["defaultPreset"], "value": "block" }, "status": 400, "error": "invalid_enum" },
+    { "name": "out of range", "method": "settings.form.set", "params": { "ns": "model", "path": ["defaultModel"], "value": "<257 ASCII bytes>" }, "status": 400, "error": "out_of_range" },
+    { "name": "unknown field", "method": "settings.mutate", "params": { "ns": "permission", "ops": [{ "op": "set", "path": ["missing"], "value": "deny" }] }, "status": 400, "error": "unknown_field" },
+    { "name": "nested path", "method": "settings.mutate", "params": { "ns": "permission", "ops": [{ "op": "set", "path": ["defaultPreset", "nested"], "value": "deny" }] }, "status": 400, "error": "invalid_path" },
+    { "name": "empty path", "method": "settings.form.reset", "params": { "ns": "permission", "path": [] }, "status": 400, "error": "invalid_path" },
+    { "name": "wrong value type", "method": "settings.form.set", "params": { "ns": "permission", "path": ["defaultPreset"], "value": 1 }, "status": 400, "error": "invalid_type" },
+    { "name": "null reset path", "method": "settings.form.reset", "params": { "ns": "permission", "path": null }, "status": 400, "error": "invalid_path" },
+    { "name": "null ops", "method": "settings.mutate", "params": { "ns": "permission", "ops": null }, "status": 400, "error": "bad_request" },
+    { "name": "unknown op member", "method": "settings.mutate", "params": { "ns": "permission", "ops": [{ "op": "set", "path": ["defaultPreset"], "value": "deny", "extra": true }] }, "status": 400, "error": "bad_request" },
+    { "name": "stale revision", "method": "settings.form.set", "params": { "ns": "permission", "path": ["defaultPreset"], "value": "deny", "expectedRevision": -1 }, "status": 400, "error": "bad_request" }
+  ]
+}

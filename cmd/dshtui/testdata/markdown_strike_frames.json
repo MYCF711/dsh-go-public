@@ -1,0 +1,41 @@
+{
+  "frames": [
+    {
+      "seq": 1,
+      "type": "user/message",
+      "time": 1000,
+      "data": {"text": "验证删除线并保留现有块"}
+    },
+    {
+      "seq": 2,
+      "type": "assistant/message",
+      "time": 2000,
+      "data": {
+        "message": {
+          "content": [
+            {"type": "reasoning", "text": "保留思考块"},
+            {"type": "text", "text": "# 删除线\n\n~~删除~~ 与 **粗体 ~~嵌套~~**。\nCJK ~~中文🙂~~，路径 C:\\Users\\ADMINI~1。\n\n- ~~列表删除~~\n\n```text\n~~围栏原文~~\n```"}
+          ]
+        }
+      }
+    },
+    {
+      "seq": 3,
+      "type": "tool/call",
+      "time": 3000,
+      "data": {"callId": "strike-fixture-tool", "name": "bash", "arguments": "{\"cmd\":\"printf ok\"}"}
+    },
+    {
+      "seq": 4,
+      "type": "tool/result",
+      "time": 4000,
+      "data": {"message": {"toolCallId": "strike-fixture-tool", "isError": false, "content": [{"type": "text", "text": "工具正文"}]}}
+    },
+    {
+      "seq": 5,
+      "type": "turn/done",
+      "time": 5000,
+      "data": {"turnId": "strike-fixture-turn"}
+    }
+  ]
+}

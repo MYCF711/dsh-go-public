@@ -1,0 +1,1413 @@
+{
+  "schema_version": 1,
+  "family": "Gentle Mist Blue",
+  "family_zh": "雾蓝",
+  "upstream": {
+    "repository": "https://github.com/ccch1mneyyy/dsh-TUI",
+    "commit": "1bd7cb515b4c6fb52f049f7bde521df48ee2f54b",
+    "license": "MIT",
+    "source": {
+      "path": "src/theme.ts",
+      "url": "https://github.com/ccch1mneyyy/dsh-TUI/blob/1bd7cb515b4c6fb52f049f7bde521df48ee2f54b/src/theme.ts",
+      "sha256": "318349fed19dd8ed673ea3c7520de43bf7777bbcec3ddb1c79bba2da3d32f377"
+    }
+  },
+  "color_value_format": "Exact runtime value from upstream rgb(hex): rgb(R,G,B), or empty string; hex preserves the source literal",
+  "color_sha256_scope": "SHA-256 of the UTF-8 color value (for example rgb(125,161,222)); an empty color hashes the empty byte string",
+  "palette_sha256_scope": "SHA-256 of compact JSON mapping the 81 Theme keys, in Theme declaration order, to color values",
+  "key_order": [
+    "autoAccept",
+    "bashBorder",
+    "accent",
+    "toolNameMutate",
+    "toolNameExec",
+    "accentShimmer",
+    "activity",
+    "activityShimmer",
+    "permission",
+    "permissionShimmer",
+    "planMode",
+    "ide",
+    "promptBorder",
+    "promptBorderShimmer",
+    "text",
+    "inverseText",
+    "inactive",
+    "inactiveShimmer",
+    "subtle",
+    "suggestion",
+    "remember",
+    "background",
+    "success",
+    "error",
+    "warning",
+    "merged",
+    "warningShimmer",
+    "diffAdded",
+    "diffRemoved",
+    "diffAddedDimmed",
+    "diffRemovedDimmed",
+    "diffAddedWord",
+    "diffRemovedWord",
+    "toolCardBackground",
+    "toolCardBackgroundDim",
+    "toolDotExec",
+    "toolDotRead",
+    "toolDotWrite",
+    "toolDotWeb",
+    "toolDotTask",
+    "syntaxKeyword",
+    "syntaxString",
+    "syntaxComment",
+    "syntaxNumber",
+    "syntaxFunction",
+    "syntaxType",
+    "syntaxVariable",
+    "syntaxOperator",
+    "syntaxPunctuation",
+    "syntaxConstant",
+    "professionalBlue",
+    "chromeYellow",
+    "contextBarSystem",
+    "contextBarPrompt",
+    "contextBarAssistant",
+    "contextBarThinking",
+    "contextBarTools",
+    "ignition",
+    "ignitionDim",
+    "cursor",
+    "mascotBody",
+    "inputBackground",
+    "userMessageBackground",
+    "userMessageBackgroundHover",
+    "messageActionsBackground",
+    "selectionBg",
+    "bashMessageBackgroundColor",
+    "memoryBackgroundColor",
+    "rate_limit_fill",
+    "rate_limit_empty",
+    "fastMode",
+    "fastModeShimmer",
+    "userPromptLabel",
+    "subagentBullet",
+    "subagentDescription",
+    "subagentModel",
+    "subagentElapsed",
+    "subagentToolName",
+    "subagentStatusRunning",
+    "subagentStatusCompleted",
+    "subagentStatusFailed"
+  ],
+  "themes": {
+    "dark": {
+      "source_symbol": "darkTheme",
+      "color_count": 81,
+      "palette_sha256": "5aa866d5b3657a83e01b185d98312d787dc01be02cd5906a9996730b05e35721",
+      "colors": {
+        "autoAccept": {
+          "value": "rgb(179,160,212)",
+          "hex": "#B3A0D4",
+          "sha256": "190cd8e0b7b2fa42bd92284e33ffe3e3c847cc1b402b64384202abe8a2de4bdb",
+          "source": "darkTheme.autoAccept",
+          "source_expression": "rgb('#B3A0D4')",
+          "source_line": 326
+        },
+        "bashBorder": {
+          "value": "rgb(209,148,174)",
+          "hex": "#D194AE",
+          "sha256": "063de3abfef824938bf6adc143b3aca3bf5856e6750be039ba975740eef071f6",
+          "source": "darkTheme.bashBorder",
+          "source_expression": "rgb('#D194AE')",
+          "source_line": 327
+        },
+        "accent": {
+          "value": "rgb(125,161,222)",
+          "hex": "#7DA1DE",
+          "sha256": "aa07a05a35fd6c4b0ea9ea40cd29755c7f90a728fbab3cb501da7ff712cf113f",
+          "source": "darkTheme.accent",
+          "source_expression": "rgb('#7DA1DE')",
+          "source_line": 328
+        },
+        "toolNameMutate": {
+          "value": "rgb(229,192,123)",
+          "hex": "#E5C07B",
+          "sha256": "ae8b2eed83425a6d0f7f093b7ced5d185d521bb24115b374a12e9571c8393e9b",
+          "source": "darkTheme.toolNameMutate",
+          "source_expression": "rgb('#E5C07B')",
+          "source_line": 329
+        },
+        "toolNameExec": {
+          "value": "rgb(86,182,194)",
+          "hex": "#56B6C2",
+          "sha256": "b18734d736d39d6468b6cb2fc922969472005eae924bc2ef1d9136409fc62402",
+          "source": "darkTheme.toolNameExec",
+          "source_expression": "rgb('#56B6C2')",
+          "source_line": 330
+        },
+        "accentShimmer": {
+          "value": "rgb(171,194,236)",
+          "hex": "#ABC2EC",
+          "sha256": "127b52dea9c273d4ce8e65b40f26d565827f2c7bd76dbbfd06004d26d7747793",
+          "source": "darkTheme.accentShimmer",
+          "source_expression": "rgb('#ABC2EC')",
+          "source_line": 331
+        },
+        "activity": {
+          "value": "rgb(125,161,222)",
+          "hex": "#7DA1DE",
+          "sha256": "aa07a05a35fd6c4b0ea9ea40cd29755c7f90a728fbab3cb501da7ff712cf113f",
+          "source": "darkTheme.activity",
+          "source_expression": "rgb('#7DA1DE')",
+          "source_line": 332
+        },
+        "activityShimmer": {
+          "value": "rgb(171,194,236)",
+          "hex": "#ABC2EC",
+          "sha256": "127b52dea9c273d4ce8e65b40f26d565827f2c7bd76dbbfd06004d26d7747793",
+          "source": "darkTheme.activityShimmer",
+          "source_expression": "rgb('#ABC2EC')",
+          "source_line": 333
+        },
+        "permission": {
+          "value": "rgb(171,194,236)",
+          "hex": "#ABC2EC",
+          "sha256": "127b52dea9c273d4ce8e65b40f26d565827f2c7bd76dbbfd06004d26d7747793",
+          "source": "darkTheme.permission",
+          "source_expression": "rgb('#ABC2EC')",
+          "source_line": 334
+        },
+        "permissionShimmer": {
+          "value": "rgb(201,215,242)",
+          "hex": "#C9D7F2",
+          "sha256": "ec279f4d772843290f120780871dde3a5674fde2e89541e88d4923fa44345bb9",
+          "source": "darkTheme.permissionShimmer",
+          "source_expression": "rgb('#C9D7F2')",
+          "source_line": 335
+        },
+        "planMode": {
+          "value": "rgb(127,174,153)",
+          "hex": "#7FAE99",
+          "sha256": "f6467dc3e560ee184b539754066402b060913b0c7ab2a70bebfed6e9dbad351a",
+          "source": "darkTheme.planMode",
+          "source_expression": "rgb('#7FAE99')",
+          "source_line": 336
+        },
+        "ide": {
+          "value": "rgb(94,136,204)",
+          "hex": "#5E88CC",
+          "sha256": "555f04049e6bb54843523225b6ab820e005f15f939f49d1a3cbf0578b171921d",
+          "source": "darkTheme.ide",
+          "source_expression": "rgb('#5E88CC')",
+          "source_line": 337
+        },
+        "promptBorder": {
+          "value": "rgb(85,96,111)",
+          "hex": "#55606F",
+          "sha256": "95e1c1b24085f405c2368e0f489482bdf971bfa221d914840e96f76fe96f64c1",
+          "source": "darkTheme.promptBorder",
+          "source_expression": "rgb('#55606F')",
+          "source_line": 338
+        },
+        "promptBorderShimmer": {
+          "value": "rgb(125,161,222)",
+          "hex": "#7DA1DE",
+          "sha256": "aa07a05a35fd6c4b0ea9ea40cd29755c7f90a728fbab3cb501da7ff712cf113f",
+          "source": "darkTheme.promptBorderShimmer",
+          "source_expression": "rgb('#7DA1DE')",
+          "source_line": 339
+        },
+        "text": {
+          "value": "rgb(232,230,224)",
+          "hex": "#E8E6E0",
+          "sha256": "844a78df55af82be991624b74d2d6d5f670c48b1846bdd1e332f83b272743940",
+          "source": "darkTheme.text",
+          "source_expression": "rgb('#E8E6E0')",
+          "source_line": 340
+        },
+        "inverseText": {
+          "value": "rgb(34,38,46)",
+          "hex": "#22262E",
+          "sha256": "6331aadb191d48c286aefec0d7d1a912f94a5e7d4c6fc7b07b8329ec54ba7028",
+          "source": "darkTheme.inverseText",
+          "source_expression": "rgb('#22262E')",
+          "source_line": 341
+        },
+        "inactive": {
+          "value": "rgb(141,149,166)",
+          "hex": "#8D95A6",
+          "sha256": "a2c6a96d1701f16ff23b44263d6e9ac54fe48d2c79cf4bef4ead769ac6e5a7c4",
+          "source": "darkTheme.inactive",
+          "source_expression": "rgb('#8D95A6')",
+          "source_line": 342
+        },
+        "inactiveShimmer": {
+          "value": "rgb(170,178,194)",
+          "hex": "#AAB2C2",
+          "sha256": "430f7431069b2499e07b59e7fa481836b42d2de49917e4ff5065670190b9e1f1",
+          "source": "darkTheme.inactiveShimmer",
+          "source_expression": "rgb('#AAB2C2')",
+          "source_line": 343
+        },
+        "subtle": {
+          "value": "rgb(94,102,115)",
+          "hex": "#5E6673",
+          "sha256": "393f57df8fc280cd64dadf2a684dbe0a0ddf6f9ac201e55b3c4a3844f61f0b93",
+          "source": "darkTheme.subtle",
+          "source_expression": "rgb('#5E6673')",
+          "source_line": 344
+        },
+        "suggestion": {
+          "value": "rgb(171,194,236)",
+          "hex": "#ABC2EC",
+          "sha256": "127b52dea9c273d4ce8e65b40f26d565827f2c7bd76dbbfd06004d26d7747793",
+          "source": "darkTheme.suggestion",
+          "source_expression": "rgb('#ABC2EC')",
+          "source_line": 345
+        },
+        "remember": {
+          "value": "rgb(171,194,236)",
+          "hex": "#ABC2EC",
+          "sha256": "127b52dea9c273d4ce8e65b40f26d565827f2c7bd76dbbfd06004d26d7747793",
+          "source": "darkTheme.remember",
+          "source_expression": "rgb('#ABC2EC')",
+          "source_line": 346
+        },
+        "background": {
+          "value": "rgb(94,136,204)",
+          "hex": "#5E88CC",
+          "sha256": "555f04049e6bb54843523225b6ab820e005f15f939f49d1a3cbf0578b171921d",
+          "source": "darkTheme.background",
+          "source_expression": "rgb('#5E88CC')",
+          "source_line": 347
+        },
+        "success": {
+          "value": "rgb(130,184,157)",
+          "hex": "#82B89D",
+          "sha256": "179faa19d9461396b1f74bde71814e9265e6335946a85ddcc8b24b520967753c",
+          "source": "darkTheme.success",
+          "source_expression": "rgb('#82B89D')",
+          "source_line": 348
+        },
+        "error": {
+          "value": "rgb(218,138,147)",
+          "hex": "#DA8A93",
+          "sha256": "fcf166362695b33493a8d15eecc5d924d42e1727e21c0650e4b30a218d9477e1",
+          "source": "darkTheme.error",
+          "source_expression": "rgb('#DA8A93')",
+          "source_line": 349
+        },
+        "warning": {
+          "value": "rgb(216,178,112)",
+          "hex": "#D8B270",
+          "sha256": "e65d0440b9607d4920b4ef61fd026a82ccd074121e7af93a1bf276f2cc4872d6",
+          "source": "darkTheme.warning",
+          "source_expression": "rgb('#D8B270')",
+          "source_line": 350
+        },
+        "merged": {
+          "value": "rgb(179,160,212)",
+          "hex": "#B3A0D4",
+          "sha256": "190cd8e0b7b2fa42bd92284e33ffe3e3c847cc1b402b64384202abe8a2de4bdb",
+          "source": "darkTheme.merged",
+          "source_expression": "rgb('#B3A0D4')",
+          "source_line": 351
+        },
+        "warningShimmer": {
+          "value": "rgb(228,199,142)",
+          "hex": "#E4C78E",
+          "sha256": "0b7a71a8a6b399af5ee4101c4994ead40ee2bdaf5ffa4b63745674eb15122f87",
+          "source": "darkTheme.warningShimmer",
+          "source_expression": "rgb('#E4C78E')",
+          "source_line": 352
+        },
+        "diffAdded": {
+          "value": "rgb(39,57,44)",
+          "hex": "#27392C",
+          "sha256": "be64db8b6e3e1dbb8b2476d90a306c6389af2665e621b6f6b15d47c8bf620065",
+          "source": "darkTheme.diffAdded",
+          "source_expression": "rgb('#27392C')",
+          "source_line": 353
+        },
+        "diffRemoved": {
+          "value": "rgb(62,42,44)",
+          "hex": "#3E2A2C",
+          "sha256": "d68a080058f55c344d4f4814a9aad34542f5d2f2818ab40e0bcb15b681ebefdd",
+          "source": "darkTheme.diffRemoved",
+          "source_expression": "rgb('#3E2A2C')",
+          "source_line": 354
+        },
+        "diffAddedDimmed": {
+          "value": "rgb(43,53,44)",
+          "hex": "#2B352C",
+          "sha256": "1ae64a627bc1aecd17a86f9933a192bd7a9861bc37aceb52fb975660023f0e6e",
+          "source": "darkTheme.diffAddedDimmed",
+          "source_expression": "rgb('#2B352C')",
+          "source_line": 355
+        },
+        "diffRemovedDimmed": {
+          "value": "rgb(54,43,44)",
+          "hex": "#362B2C",
+          "sha256": "3e0eb1c55c0e9539fc19897051a16162318b37e00676be90045ef40263aa0f66",
+          "source": "darkTheme.diffRemovedDimmed",
+          "source_expression": "rgb('#362B2C')",
+          "source_line": 356
+        },
+        "diffAddedWord": {
+          "value": "rgb(87,149,107)",
+          "hex": "#57956B",
+          "sha256": "76cc88b15c57cfe443da93a7a11077ee121e1c7fcc0008d549945e88ec2a4208",
+          "source": "darkTheme.diffAddedWord",
+          "source_expression": "rgb('#57956B')",
+          "source_line": 357
+        },
+        "diffRemovedWord": {
+          "value": "rgb(178,102,113)",
+          "hex": "#B26671",
+          "sha256": "8dff322c290c80d9fbc1c20a315ec3abdef6fcf8e6abaa69f8eab4d01eb5f28c",
+          "source": "darkTheme.diffRemovedWord",
+          "source_expression": "rgb('#B26671')",
+          "source_line": 358
+        },
+        "toolCardBackground": {
+          "value": "rgb(36,43,58)",
+          "hex": "#242B3A",
+          "sha256": "46232ad1dfbde5ae720325f5eac233b4cc646a9a8d82be0b0f95421411acce1c",
+          "source": "darkTheme.toolCardBackground",
+          "source_expression": "rgb('#242B3A')",
+          "source_line": 359
+        },
+        "toolCardBackgroundDim": {
+          "value": "rgb(28,35,48)",
+          "hex": "#1C2330",
+          "sha256": "24ce915c65ac3baec2a25a1b6ff69d02d70ccd15817d659714997a406feb75db",
+          "source": "darkTheme.toolCardBackgroundDim",
+          "source_expression": "rgb('#1C2330')",
+          "source_line": 360
+        },
+        "toolDotExec": {
+          "value": "rgb(127,174,153)",
+          "hex": "#7FAE99",
+          "sha256": "f6467dc3e560ee184b539754066402b060913b0c7ab2a70bebfed6e9dbad351a",
+          "source": "darkTheme.toolDotExec",
+          "source_expression": "rgb('#7FAE99')",
+          "source_line": 361
+        },
+        "toolDotRead": {
+          "value": "rgb(130,184,199)",
+          "hex": "#82B8C7",
+          "sha256": "26434ceaed3fc12af4441c8fef181f3e208ca46ad06fbc08f4ede82d5f1e76e6",
+          "source": "darkTheme.toolDotRead",
+          "source_expression": "rgb('#82B8C7')",
+          "source_line": 362
+        },
+        "toolDotWrite": {
+          "value": "rgb(179,160,212)",
+          "hex": "#B3A0D4",
+          "sha256": "190cd8e0b7b2fa42bd92284e33ffe3e3c847cc1b402b64384202abe8a2de4bdb",
+          "source": "darkTheme.toolDotWrite",
+          "source_expression": "rgb('#B3A0D4')",
+          "source_line": 363
+        },
+        "toolDotWeb": {
+          "value": "rgb(125,161,222)",
+          "hex": "#7DA1DE",
+          "sha256": "aa07a05a35fd6c4b0ea9ea40cd29755c7f90a728fbab3cb501da7ff712cf113f",
+          "source": "darkTheme.toolDotWeb",
+          "source_expression": "rgb('#7DA1DE')",
+          "source_line": 364
+        },
+        "toolDotTask": {
+          "value": "rgb(209,148,174)",
+          "hex": "#D194AE",
+          "sha256": "063de3abfef824938bf6adc143b3aca3bf5856e6750be039ba975740eef071f6",
+          "source": "darkTheme.toolDotTask",
+          "source_expression": "rgb('#D194AE')",
+          "source_line": 365
+        },
+        "syntaxKeyword": {
+          "value": "rgb(120,160,214)",
+          "hex": "#78A0D6",
+          "sha256": "cf36d61c33c62eef3f48d4fbfc4a5cc6efda34e387dbdfa30166440ede9db3e1",
+          "source": "darkTheme.syntaxKeyword",
+          "source_expression": "rgb('#78A0D6')",
+          "source_line": 366
+        },
+        "syntaxString": {
+          "value": "rgb(121,173,145)",
+          "hex": "#79AD91",
+          "sha256": "62bce93c0bd249af864b056ef1cbf5c1e33da5926394a5147d9a4dd0cf54da34",
+          "source": "darkTheme.syntaxString",
+          "source_expression": "rgb('#79AD91')",
+          "source_line": 367
+        },
+        "syntaxComment": {
+          "value": "rgb(116,128,141)",
+          "hex": "#74808D",
+          "sha256": "350f7845196ec7de3cf33fdbcc28f3b7231db17c663a09e4d306b1d06954198a",
+          "source": "darkTheme.syntaxComment",
+          "source_expression": "rgb('#74808D')",
+          "source_line": 368
+        },
+        "syntaxNumber": {
+          "value": "rgb(200,155,112)",
+          "hex": "#C89B70",
+          "sha256": "84892d7183e948175f6399aaf6c31956de2d44f06f9a89c87228b6efb8fff0eb",
+          "source": "darkTheme.syntaxNumber",
+          "source_expression": "rgb('#C89B70')",
+          "source_line": 369
+        },
+        "syntaxFunction": {
+          "value": "rgb(111,174,181)",
+          "hex": "#6FAEB5",
+          "sha256": "6e425cf96ed3fcc5d91a81dbac37e5d0b55fb789ef690a18a6d2479279cea647",
+          "source": "darkTheme.syntaxFunction",
+          "source_expression": "rgb('#6FAEB5')",
+          "source_line": 370
+        },
+        "syntaxType": {
+          "value": "rgb(169,143,191)",
+          "hex": "#A98FBF",
+          "sha256": "fbbc31784debb02cde5eb298e9bfeac6a3463c06943456b4b6fc0ecbe80b343a",
+          "source": "darkTheme.syntaxType",
+          "source_expression": "rgb('#A98FBF')",
+          "source_line": 371
+        },
+        "syntaxVariable": {
+          "value": "rgb(201,209,217)",
+          "hex": "#C9D1D9",
+          "sha256": "7a65dd7591ad2909b8ca461f103659d1613efb9abf6f9752368972067684f5d5",
+          "source": "darkTheme.syntaxVariable",
+          "source_expression": "rgb('#C9D1D9')",
+          "source_line": 372
+        },
+        "syntaxOperator": {
+          "value": "rgb(147,161,176)",
+          "hex": "#93A1B0",
+          "sha256": "3b4e4df028498ce3da113b469d7ca5a321e2323c073c1ae33450d3df795f5587",
+          "source": "darkTheme.syntaxOperator",
+          "source_expression": "rgb('#93A1B0')",
+          "source_line": 373
+        },
+        "syntaxPunctuation": {
+          "value": "rgb(122,134,148)",
+          "hex": "#7A8694",
+          "sha256": "b758f101baa72159885e6912bc0f38e43e74f712b0feabdb8aa4d0c59f224ec5",
+          "source": "darkTheme.syntaxPunctuation",
+          "source_expression": "rgb('#7A8694')",
+          "source_line": 374
+        },
+        "syntaxConstant": {
+          "value": "rgb(201,130,145)",
+          "hex": "#C98291",
+          "sha256": "f55e7b514bad0512e3a816117de9220ed942ee70fd27bfd6d14fc07ac5495b0c",
+          "source": "darkTheme.syntaxConstant",
+          "source_expression": "rgb('#C98291')",
+          "source_line": 375
+        },
+        "professionalBlue": {
+          "value": "rgb(125,161,222)",
+          "hex": "#7DA1DE",
+          "sha256": "aa07a05a35fd6c4b0ea9ea40cd29755c7f90a728fbab3cb501da7ff712cf113f",
+          "source": "darkTheme.professionalBlue",
+          "source_expression": "rgb('#7DA1DE')",
+          "source_line": 376
+        },
+        "chromeYellow": {
+          "value": "rgb(216,178,112)",
+          "hex": "#D8B270",
+          "sha256": "e65d0440b9607d4920b4ef61fd026a82ccd074121e7af93a1bf276f2cc4872d6",
+          "source": "darkTheme.chromeYellow",
+          "source_expression": "rgb('#D8B270')",
+          "source_line": 377
+        },
+        "contextBarSystem": {
+          "value": "rgb(34,48,95)",
+          "hex": "#22305F",
+          "sha256": "fd94885b63a7f62ce0c307dadd6bf362a0a3a718c8a3473ee383d878ae34457d",
+          "source": "MIST_BAR_RAMP.contextBarSystem",
+          "source_expression": "rgb('#22305F')",
+          "source_line": 313
+        },
+        "contextBarPrompt": {
+          "value": "rgb(43,61,120)",
+          "hex": "#2B3D78",
+          "sha256": "41cbf113302afe908295e868874f05941edab3fe277c28d7654704cd83741e53",
+          "source": "MIST_BAR_RAMP.contextBarPrompt",
+          "source_expression": "rgb('#2B3D78')",
+          "source_line": 314
+        },
+        "contextBarAssistant": {
+          "value": "rgb(52,74,146)",
+          "hex": "#344A92",
+          "sha256": "8b25cf38370301a9e63b29e349fe499bdf3472b0054888ffd1efca15ea14500f",
+          "source": "MIST_BAR_RAMP.contextBarAssistant",
+          "source_expression": "rgb('#344A92')",
+          "source_line": 315
+        },
+        "contextBarThinking": {
+          "value": "rgb(77,107,254)",
+          "hex": "#4D6BFE",
+          "sha256": "b47a0a338a1e1915af48f533062c89d610b0dc77f538ce0b947d74f81dc305c9",
+          "source": "MIST_BAR_RAMP.contextBarThinking",
+          "source_expression": "rgb('#4D6BFE')",
+          "source_line": 316
+        },
+        "contextBarTools": {
+          "value": "rgb(90,124,255)",
+          "hex": "#5A7CFF",
+          "sha256": "a4a8db5153dca1029fd09d032d6575a472fa607f09847e5b0694f6d0fdfb5a7b",
+          "source": "MIST_BAR_RAMP.contextBarTools",
+          "source_expression": "rgb('#5A7CFF')",
+          "source_line": 317
+        },
+        "ignition": {
+          "value": "rgb(130,185,255)",
+          "hex": "#82B9FF",
+          "sha256": "7d5604066c7866137675f477d5563f2194ba5fb395a2e0923b984efff2183a8d",
+          "source": "darkTheme.ignition",
+          "source_expression": "rgb('#82B9FF')",
+          "source_line": 382
+        },
+        "ignitionDim": {
+          "value": "rgb(27,30,40)",
+          "hex": "#1B1E28",
+          "sha256": "f3eef5ba375d34b7de2fe473a499d052e9a3dc4aa239078adf047b868462106a",
+          "source": "darkTheme.ignitionDim",
+          "source_expression": "rgb('#1B1E28')",
+          "source_line": 383
+        },
+        "cursor": {
+          "value": "",
+          "hex": null,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source": "darkTheme.cursor",
+          "source_expression": "''",
+          "source_line": 387
+        },
+        "mascotBody": {
+          "value": "rgb(217,138,99)",
+          "hex": "#D98A63",
+          "sha256": "5d9f18d8e011edd8a0db5b8de4e5c2c494d85a2e4dcbef40169f23a70ecd5aeb",
+          "source": "darkTheme.mascotBody",
+          "source_expression": "rgb('#D98A63')",
+          "source_line": 388
+        },
+        "inputBackground": {
+          "value": "rgb(0,0,0)",
+          "hex": "#000000",
+          "sha256": "7b50466c70758c8cd161892350c88f4db7a59db0382220136101cb44b494e4b5",
+          "source": "darkTheme.inputBackground",
+          "source_expression": "rgb('#000000')",
+          "source_line": 389
+        },
+        "userMessageBackground": {
+          "value": "",
+          "hex": null,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source": "darkTheme.userMessageBackground",
+          "source_expression": "''",
+          "source_line": 390
+        },
+        "userMessageBackgroundHover": {
+          "value": "rgb(59,91,219)",
+          "hex": "#3B5BDB",
+          "sha256": "162c4d732fa6d7a39b1881624910d80a284109ecec2d64e2d103524c671a0c76",
+          "source": "darkTheme.userMessageBackgroundHover",
+          "source_expression": "rgb('#3B5BDB')",
+          "source_line": 391
+        },
+        "messageActionsBackground": {
+          "value": "rgb(46,51,61)",
+          "hex": "#2E333D",
+          "sha256": "4606ccb2037a80a35f4ce27233780ab4e083807ca1c55d5d8e2a7bc7f80a140e",
+          "source": "darkTheme.messageActionsBackground",
+          "source_expression": "rgb('#2E333D')",
+          "source_line": 392
+        },
+        "selectionBg": {
+          "value": "rgb(59,74,102)",
+          "hex": "#3B4A66",
+          "sha256": "8f5c7b78427ed6c29937fbad04370195089834704d3592d9e7f1066c89a317bb",
+          "source": "darkTheme.selectionBg",
+          "source_expression": "rgb('#3B4A66')",
+          "source_line": 393
+        },
+        "bashMessageBackgroundColor": {
+          "value": "rgb(44,48,56)",
+          "hex": "#2C3038",
+          "sha256": "abfd716dd7624efd19b816eac1d1363550caa775a770d72ee2824be7bb14c03e",
+          "source": "darkTheme.bashMessageBackgroundColor",
+          "source_expression": "rgb('#2C3038')",
+          "source_line": 394
+        },
+        "memoryBackgroundColor": {
+          "value": "rgb(48,53,61)",
+          "hex": "#30353D",
+          "sha256": "9fbb2805d5a0383d5816a198832d946b4c76258e7ff89191bb10295bc2dbc36f",
+          "source": "darkTheme.memoryBackgroundColor",
+          "source_expression": "rgb('#30353D')",
+          "source_line": 395
+        },
+        "rate_limit_fill": {
+          "value": "rgb(125,161,222)",
+          "hex": "#7DA1DE",
+          "sha256": "aa07a05a35fd6c4b0ea9ea40cd29755c7f90a728fbab3cb501da7ff712cf113f",
+          "source": "darkTheme.rate_limit_fill",
+          "source_expression": "rgb('#7DA1DE')",
+          "source_line": 396
+        },
+        "rate_limit_empty": {
+          "value": "rgb(60,65,75)",
+          "hex": "#3C414B",
+          "sha256": "e053f7c14cfbe6971be9983050476f6695e4a8918c820d36aa771190d22548d7",
+          "source": "darkTheme.rate_limit_empty",
+          "source_expression": "rgb('#3C414B')",
+          "source_line": 397
+        },
+        "fastMode": {
+          "value": "rgb(224,154,88)",
+          "hex": "#E09A58",
+          "sha256": "8b9f55b073011fffb143c97a50d646af8a5bf032d95aa5f03aac0567ea8ced2e",
+          "source": "darkTheme.fastMode",
+          "source_expression": "rgb('#E09A58')",
+          "source_line": 398
+        },
+        "fastModeShimmer": {
+          "value": "rgb(234,180,120)",
+          "hex": "#EAB478",
+          "sha256": "02484469979fb90efa68392c7ca8836ba353626f9952f833531839485ca6eba1",
+          "source": "darkTheme.fastModeShimmer",
+          "source_expression": "rgb('#EAB478')",
+          "source_line": 399
+        },
+        "userPromptLabel": {
+          "value": "rgb(215,119,87)",
+          "hex": "#D77757",
+          "sha256": "fad992881da1d3f219927055e1a9f72914ea155ef07e46134fcd84cb9344cfe9",
+          "source": "darkTheme.userPromptLabel",
+          "source_expression": "rgb('#D77757')",
+          "source_line": 401
+        },
+        "subagentBullet": {
+          "value": "rgb(209,148,174)",
+          "hex": "#D194AE",
+          "sha256": "063de3abfef824938bf6adc143b3aca3bf5856e6750be039ba975740eef071f6",
+          "source": "darkTheme.subagentBullet",
+          "source_expression": "rgb('#D194AE')",
+          "source_line": 402
+        },
+        "subagentDescription": {
+          "value": "rgb(232,230,224)",
+          "hex": "#E8E6E0",
+          "sha256": "844a78df55af82be991624b74d2d6d5f670c48b1846bdd1e332f83b272743940",
+          "source": "darkTheme.subagentDescription",
+          "source_expression": "rgb('#E8E6E0')",
+          "source_line": 403
+        },
+        "subagentModel": {
+          "value": "rgb(141,149,166)",
+          "hex": "#8D95A6",
+          "sha256": "a2c6a96d1701f16ff23b44263d6e9ac54fe48d2c79cf4bef4ead769ac6e5a7c4",
+          "source": "darkTheme.subagentModel",
+          "source_expression": "rgb('#8D95A6')",
+          "source_line": 404
+        },
+        "subagentElapsed": {
+          "value": "rgb(141,149,166)",
+          "hex": "#8D95A6",
+          "sha256": "a2c6a96d1701f16ff23b44263d6e9ac54fe48d2c79cf4bef4ead769ac6e5a7c4",
+          "source": "darkTheme.subagentElapsed",
+          "source_expression": "rgb('#8D95A6')",
+          "source_line": 405
+        },
+        "subagentToolName": {
+          "value": "rgb(125,161,222)",
+          "hex": "#7DA1DE",
+          "sha256": "aa07a05a35fd6c4b0ea9ea40cd29755c7f90a728fbab3cb501da7ff712cf113f",
+          "source": "darkTheme.subagentToolName",
+          "source_expression": "rgb('#7DA1DE')",
+          "source_line": 406
+        },
+        "subagentStatusRunning": {
+          "value": "rgb(125,161,222)",
+          "hex": "#7DA1DE",
+          "sha256": "aa07a05a35fd6c4b0ea9ea40cd29755c7f90a728fbab3cb501da7ff712cf113f",
+          "source": "darkTheme.subagentStatusRunning",
+          "source_expression": "rgb('#7DA1DE')",
+          "source_line": 407
+        },
+        "subagentStatusCompleted": {
+          "value": "rgb(130,184,157)",
+          "hex": "#82B89D",
+          "sha256": "179faa19d9461396b1f74bde71814e9265e6335946a85ddcc8b24b520967753c",
+          "source": "darkTheme.subagentStatusCompleted",
+          "source_expression": "rgb('#82B89D')",
+          "source_line": 408
+        },
+        "subagentStatusFailed": {
+          "value": "rgb(218,138,147)",
+          "hex": "#DA8A93",
+          "sha256": "fcf166362695b33493a8d15eecc5d924d42e1727e21c0650e4b30a218d9477e1",
+          "source": "darkTheme.subagentStatusFailed",
+          "source_expression": "rgb('#DA8A93')",
+          "source_line": 409
+        }
+      }
+    },
+    "light": {
+      "source_symbol": "lightTheme",
+      "color_count": 81,
+      "palette_sha256": "0f3061d79b36085ce64156c592f51afd9a5bc2b144bee98156ab80aa5f7f3bcc",
+      "colors": {
+        "autoAccept": {
+          "value": "rgb(155,134,184)",
+          "hex": "#9B86B8",
+          "sha256": "d0cbbbda7c1e49af66d361fc33a89e36dae115784a596919b64b444df7b6fcd7",
+          "source": "lightTheme.autoAccept",
+          "source_expression": "rgb('#9B86B8')",
+          "source_line": 512
+        },
+        "bashBorder": {
+          "value": "rgb(192,122,147)",
+          "hex": "#C07A93",
+          "sha256": "5ec9b632a1dd6c7ef07426e62d07e6ea94b391c7f6bbd6ad730a5b9e9773d029",
+          "source": "lightTheme.bashBorder",
+          "source_expression": "rgb('#C07A93')",
+          "source_line": 513
+        },
+        "accent": {
+          "value": "rgb(63,108,196)",
+          "hex": "#3F6CC4",
+          "sha256": "621b3380c13385f5abfc8bdc969013171bad10e2ec1d69fe7365aed6f144009c",
+          "source": "lightTheme.accent",
+          "source_expression": "rgb('#3F6CC4')",
+          "source_line": 514
+        },
+        "toolNameMutate": {
+          "value": "rgb(138,106,0)",
+          "hex": "#8A6A00",
+          "sha256": "7fce4bf7cd890fbe7f3d37467bf625d72f0f7a5f2cb53f74eb34538c9a46a425",
+          "source": "lightTheme.toolNameMutate",
+          "source_expression": "rgb('#8A6A00')",
+          "source_line": 515
+        },
+        "toolNameExec": {
+          "value": "rgb(15,122,138)",
+          "hex": "#0F7A8A",
+          "sha256": "b4e8d46956db8a7e75aa836222aac119c12aafcf467025d9727bd8fbb7049822",
+          "source": "lightTheme.toolNameExec",
+          "source_expression": "rgb('#0F7A8A')",
+          "source_line": 516
+        },
+        "accentShimmer": {
+          "value": "rgb(94,136,204)",
+          "hex": "#5E88CC",
+          "sha256": "555f04049e6bb54843523225b6ab820e005f15f939f49d1a3cbf0578b171921d",
+          "source": "lightTheme.accentShimmer",
+          "source_expression": "rgb('#5E88CC')",
+          "source_line": 517
+        },
+        "activity": {
+          "value": "rgb(63,108,196)",
+          "hex": "#3F6CC4",
+          "sha256": "621b3380c13385f5abfc8bdc969013171bad10e2ec1d69fe7365aed6f144009c",
+          "source": "lightTheme.activity",
+          "source_expression": "rgb('#3F6CC4')",
+          "source_line": 518
+        },
+        "activityShimmer": {
+          "value": "rgb(94,136,204)",
+          "hex": "#5E88CC",
+          "sha256": "555f04049e6bb54843523225b6ab820e005f15f939f49d1a3cbf0578b171921d",
+          "source": "lightTheme.activityShimmer",
+          "source_expression": "rgb('#5E88CC')",
+          "source_line": 519
+        },
+        "permission": {
+          "value": "rgb(63,108,196)",
+          "hex": "#3F6CC4",
+          "sha256": "621b3380c13385f5abfc8bdc969013171bad10e2ec1d69fe7365aed6f144009c",
+          "source": "lightTheme.permission",
+          "source_expression": "rgb('#3F6CC4')",
+          "source_line": 520
+        },
+        "permissionShimmer": {
+          "value": "rgb(94,136,204)",
+          "hex": "#5E88CC",
+          "sha256": "555f04049e6bb54843523225b6ab820e005f15f939f49d1a3cbf0578b171921d",
+          "source": "lightTheme.permissionShimmer",
+          "source_expression": "rgb('#5E88CC')",
+          "source_line": 521
+        },
+        "planMode": {
+          "value": "rgb(78,150,117)",
+          "hex": "#4E9675",
+          "sha256": "0380327956d5f302eabe7990313655d051275b81d1de0492da22b589063791b4",
+          "source": "lightTheme.planMode",
+          "source_expression": "rgb('#4E9675')",
+          "source_line": 522
+        },
+        "ide": {
+          "value": "rgb(94,136,204)",
+          "hex": "#5E88CC",
+          "sha256": "555f04049e6bb54843523225b6ab820e005f15f939f49d1a3cbf0578b171921d",
+          "source": "lightTheme.ide",
+          "source_expression": "rgb('#5E88CC')",
+          "source_line": 523
+        },
+        "promptBorder": {
+          "value": "rgb(171,194,236)",
+          "hex": "#ABC2EC",
+          "sha256": "127b52dea9c273d4ce8e65b40f26d565827f2c7bd76dbbfd06004d26d7747793",
+          "source": "lightTheme.promptBorder",
+          "source_expression": "rgb('#ABC2EC')",
+          "source_line": 524
+        },
+        "promptBorderShimmer": {
+          "value": "rgb(125,161,222)",
+          "hex": "#7DA1DE",
+          "sha256": "aa07a05a35fd6c4b0ea9ea40cd29755c7f90a728fbab3cb501da7ff712cf113f",
+          "source": "lightTheme.promptBorderShimmer",
+          "source_expression": "rgb('#7DA1DE')",
+          "source_line": 525
+        },
+        "text": {
+          "value": "rgb(52,57,69)",
+          "hex": "#343945",
+          "sha256": "4f04bc21e5051600736ebafaaa067d6e7f0f156012be1ca3a06a51c0e9f31371",
+          "source": "lightTheme.text",
+          "source_expression": "rgb('#343945')",
+          "source_line": 526
+        },
+        "inverseText": {
+          "value": "rgb(246,243,237)",
+          "hex": "#F6F3ED",
+          "sha256": "f51d70f66cf4d9ae79f742ec6795a3c22ebd5915f286c26d9accb7d38ccbfd20",
+          "source": "lightTheme.inverseText",
+          "source_expression": "rgb('#F6F3ED')",
+          "source_line": 527
+        },
+        "inactive": {
+          "value": "rgb(137,145,160)",
+          "hex": "#8991A0",
+          "sha256": "5ba5c9bad7b431f1490950cfc959c64c291597827803bced32dee79d06580d65",
+          "source": "lightTheme.inactive",
+          "source_expression": "rgb('#8991A0')",
+          "source_line": 528
+        },
+        "inactiveShimmer": {
+          "value": "rgb(98,105,120)",
+          "hex": "#626978",
+          "sha256": "89645026f0b185ebf0843aee2b34493694d2175cd5641801ce254799c641a029",
+          "source": "lightTheme.inactiveShimmer",
+          "source_expression": "rgb('#626978')",
+          "source_line": 529
+        },
+        "subtle": {
+          "value": "rgb(166,173,186)",
+          "hex": "#A6ADBA",
+          "sha256": "4c04eb870d3ad950eba8baea9cb47fff966326e36346ff6b9fa05159dd4c352f",
+          "source": "lightTheme.subtle",
+          "source_expression": "rgb('#A6ADBA')",
+          "source_line": 530
+        },
+        "suggestion": {
+          "value": "rgb(63,108,196)",
+          "hex": "#3F6CC4",
+          "sha256": "621b3380c13385f5abfc8bdc969013171bad10e2ec1d69fe7365aed6f144009c",
+          "source": "lightTheme.suggestion",
+          "source_expression": "rgb('#3F6CC4')",
+          "source_line": 531
+        },
+        "remember": {
+          "value": "rgb(39,71,140)",
+          "hex": "#27478C",
+          "sha256": "3efec74cd142b1bfdcfa5f858ebe3ff380f68c413cff38f98ef95796031e7426",
+          "source": "lightTheme.remember",
+          "source_expression": "rgb('#27478C')",
+          "source_line": 532
+        },
+        "background": {
+          "value": "rgb(63,108,196)",
+          "hex": "#3F6CC4",
+          "sha256": "621b3380c13385f5abfc8bdc969013171bad10e2ec1d69fe7365aed6f144009c",
+          "source": "lightTheme.background",
+          "source_expression": "rgb('#3F6CC4')",
+          "source_line": 533
+        },
+        "success": {
+          "value": "rgb(78,150,117)",
+          "hex": "#4E9675",
+          "sha256": "0380327956d5f302eabe7990313655d051275b81d1de0492da22b589063791b4",
+          "source": "lightTheme.success",
+          "source_expression": "rgb('#4E9675')",
+          "source_line": 534
+        },
+        "error": {
+          "value": "rgb(198,93,107)",
+          "hex": "#C65D6B",
+          "sha256": "1814fc77fccdf769e4fb5f87cc9a2832ea9197ce5483f46c90271d7a02821277",
+          "source": "lightTheme.error",
+          "source_expression": "rgb('#C65D6B')",
+          "source_line": 535
+        },
+        "warning": {
+          "value": "rgb(192,138,62)",
+          "hex": "#C08A3E",
+          "sha256": "8af6c54545d6b1d7d35efe260d5913f056f84285d63668f7c609b23b9918d363",
+          "source": "lightTheme.warning",
+          "source_expression": "rgb('#C08A3E')",
+          "source_line": 536
+        },
+        "merged": {
+          "value": "rgb(155,134,184)",
+          "hex": "#9B86B8",
+          "sha256": "d0cbbbda7c1e49af66d361fc33a89e36dae115784a596919b64b444df7b6fcd7",
+          "source": "lightTheme.merged",
+          "source_expression": "rgb('#9B86B8')",
+          "source_line": 537
+        },
+        "warningShimmer": {
+          "value": "rgb(208,160,80)",
+          "hex": "#D0A050",
+          "sha256": "2e3430ec791132130c90b3dd40707c20d7828b03f75c6d838df384b8c93253eb",
+          "source": "lightTheme.warningShimmer",
+          "source_expression": "rgb('#D0A050')",
+          "source_line": 538
+        },
+        "diffAdded": {
+          "value": "rgb(220,235,221)",
+          "hex": "#DCEBDD",
+          "sha256": "b11ea1538c998273adbf981c26ba661465912fb0b23ff7fd7077a89588bf4699",
+          "source": "lightTheme.diffAdded",
+          "source_expression": "rgb('#DCEBDD')",
+          "source_line": 539
+        },
+        "diffRemoved": {
+          "value": "rgb(242,222,222)",
+          "hex": "#F2DEDE",
+          "sha256": "f92478d0641f0571af047007b3dae3b5cefa0c2009266ca5aae7122a0c6560a4",
+          "source": "lightTheme.diffRemoved",
+          "source_expression": "rgb('#F2DEDE')",
+          "source_line": 540
+        },
+        "diffAddedDimmed": {
+          "value": "rgb(228,239,229)",
+          "hex": "#E4EFE5",
+          "sha256": "4c64deac67d7a01b3c0f63afa83323140c6703d1cd73701167e54eba24cc3e74",
+          "source": "lightTheme.diffAddedDimmed",
+          "source_expression": "rgb('#E4EFE5')",
+          "source_line": 541
+        },
+        "diffRemovedDimmed": {
+          "value": "rgb(245,230,228)",
+          "hex": "#F5E6E4",
+          "sha256": "5fc03337300cd52ff143bac31ca9086ce6a6b0c59c1dc4cbe572146527c4be72",
+          "source": "lightTheme.diffRemovedDimmed",
+          "source_expression": "rgb('#F5E6E4')",
+          "source_line": 542
+        },
+        "diffAddedWord": {
+          "value": "rgb(169,211,180)",
+          "hex": "#A9D3B4",
+          "sha256": "9c21caf4e588ffbb2affc492a923b1a1354bfb986b355a7e210de26d13542f9f",
+          "source": "lightTheme.diffAddedWord",
+          "source_expression": "rgb('#A9D3B4')",
+          "source_line": 543
+        },
+        "diffRemovedWord": {
+          "value": "rgb(229,179,174)",
+          "hex": "#E5B3AE",
+          "sha256": "7268f207e49b9cc1239c5679575ec08f10e8365b35b39ef49353f6c6070cdf7d",
+          "source": "lightTheme.diffRemovedWord",
+          "source_expression": "rgb('#E5B3AE')",
+          "source_line": 544
+        },
+        "toolCardBackground": {
+          "value": "rgb(255,255,255)",
+          "hex": "#FFFFFF",
+          "sha256": "4cea3afb98e35b230b19c450226dce645ac10cf83b17ebfadadbad8bd5f2eb8a",
+          "source": "lightTheme.toolCardBackground",
+          "source_expression": "rgb('#FFFFFF')",
+          "source_line": 545
+        },
+        "toolCardBackgroundDim": {
+          "value": "rgb(255,255,255)",
+          "hex": "#FFFFFF",
+          "sha256": "4cea3afb98e35b230b19c450226dce645ac10cf83b17ebfadadbad8bd5f2eb8a",
+          "source": "lightTheme.toolCardBackgroundDim",
+          "source_expression": "rgb('#FFFFFF')",
+          "source_line": 546
+        },
+        "toolDotExec": {
+          "value": "rgb(78,122,78)",
+          "hex": "#4E7A4E",
+          "sha256": "aa66d875a829f553b507f72e3b307845616c65236da1b03c1121b0454e5db739",
+          "source": "lightTheme.toolDotExec",
+          "source_expression": "rgb('#4E7A4E')",
+          "source_line": 547
+        },
+        "toolDotRead": {
+          "value": "rgb(63,126,143)",
+          "hex": "#3F7E8F",
+          "sha256": "d5eb6cac8e6b29b383ae31a8c5449fbce93b62a165f31707fed3d01d909f4c8e",
+          "source": "lightTheme.toolDotRead",
+          "source_expression": "rgb('#3F7E8F')",
+          "source_line": 548
+        },
+        "toolDotWrite": {
+          "value": "rgb(122,92,168)",
+          "hex": "#7A5CA8",
+          "sha256": "d957e0edbf43dc2390e0798981989ebb8b520906560a7d8ea15dfb63c3aa845d",
+          "source": "lightTheme.toolDotWrite",
+          "source_expression": "rgb('#7A5CA8')",
+          "source_line": 549
+        },
+        "toolDotWeb": {
+          "value": "rgb(74,99,168)",
+          "hex": "#4A63A8",
+          "sha256": "7591669207a573adc414831c8fbee2a37f24dbb3ed2d2bfe3dc60752acecf77c",
+          "source": "lightTheme.toolDotWeb",
+          "source_expression": "rgb('#4A63A8')",
+          "source_line": 550
+        },
+        "toolDotTask": {
+          "value": "rgb(176,74,90)",
+          "hex": "#B04A5A",
+          "sha256": "55740878b904a7402fd00f41b1c151181a07531782e183dab7e1db8e462748fb",
+          "source": "lightTheme.toolDotTask",
+          "source_expression": "rgb('#B04A5A')",
+          "source_line": 551
+        },
+        "syntaxKeyword": {
+          "value": "rgb(63,104,181)",
+          "hex": "#3F68B5",
+          "sha256": "7b30d762043c49ba83e99df8ec32b88c163d112250d0f64c49c6e8587a82cbb2",
+          "source": "lightTheme.syntaxKeyword",
+          "source_expression": "rgb('#3F68B5')",
+          "source_line": 552
+        },
+        "syntaxString": {
+          "value": "rgb(63,128,95)",
+          "hex": "#3F805F",
+          "sha256": "468e7c51079431608975472f63288e82debb006e157a98a571cdf3a4cdea8e4f",
+          "source": "lightTheme.syntaxString",
+          "source_expression": "rgb('#3F805F')",
+          "source_line": 553
+        },
+        "syntaxComment": {
+          "value": "rgb(125,133,143)",
+          "hex": "#7D858F",
+          "sha256": "ac7fc2a781113fae92e9e3c6eaa33b2b0dbfd84176555434149ce157c26bcdf8",
+          "source": "lightTheme.syntaxComment",
+          "source_expression": "rgb('#7D858F')",
+          "source_line": 554
+        },
+        "syntaxNumber": {
+          "value": "rgb(167,101,43)",
+          "hex": "#A7652B",
+          "sha256": "35299ab6b8b1ef28920187148c7e55058aec924322a899ce2feff3de61c5411d",
+          "source": "lightTheme.syntaxNumber",
+          "source_expression": "rgb('#A7652B')",
+          "source_line": 555
+        },
+        "syntaxFunction": {
+          "value": "rgb(46,126,138)",
+          "hex": "#2E7E8A",
+          "sha256": "9d093645cc52daef5379124dd38a357179e933d4f4681cd519e1e52b3ef1555c",
+          "source": "lightTheme.syntaxFunction",
+          "source_expression": "rgb('#2E7E8A')",
+          "source_line": 556
+        },
+        "syntaxType": {
+          "value": "rgb(126,85,164)",
+          "hex": "#7E55A4",
+          "sha256": "520e03229020a5733e0bed5a2406759be74ce904a6759c19d73afc34e7dee203",
+          "source": "lightTheme.syntaxType",
+          "source_expression": "rgb('#7E55A4')",
+          "source_line": 557
+        },
+        "syntaxVariable": {
+          "value": "rgb(52,57,69)",
+          "hex": "#343945",
+          "sha256": "4f04bc21e5051600736ebafaaa067d6e7f0f156012be1ca3a06a51c0e9f31371",
+          "source": "lightTheme.syntaxVariable",
+          "source_expression": "rgb('#343945')",
+          "source_line": 558
+        },
+        "syntaxOperator": {
+          "value": "rgb(91,102,114)",
+          "hex": "#5B6672",
+          "sha256": "33f56728eaafbd0f19192b40a2e0c5d148fdc54398bd5e1702c2eb512c2b6de0",
+          "source": "lightTheme.syntaxOperator",
+          "source_expression": "rgb('#5B6672')",
+          "source_line": 559
+        },
+        "syntaxPunctuation": {
+          "value": "rgb(154,160,168)",
+          "hex": "#9AA0A8",
+          "sha256": "93a59e336ea807cfe08235a43bb005775401139770d687541206990820554d39",
+          "source": "lightTheme.syntaxPunctuation",
+          "source_expression": "rgb('#9AA0A8')",
+          "source_line": 560
+        },
+        "syntaxConstant": {
+          "value": "rgb(168,68,114)",
+          "hex": "#A84472",
+          "sha256": "58437e59c7184e020bf5016aac11d488839bedd7485f268963bc56773c4fbb81",
+          "source": "lightTheme.syntaxConstant",
+          "source_expression": "rgb('#A84472')",
+          "source_line": 561
+        },
+        "professionalBlue": {
+          "value": "rgb(94,136,204)",
+          "hex": "#5E88CC",
+          "sha256": "555f04049e6bb54843523225b6ab820e005f15f939f49d1a3cbf0578b171921d",
+          "source": "lightTheme.professionalBlue",
+          "source_expression": "rgb('#5E88CC')",
+          "source_line": 562
+        },
+        "chromeYellow": {
+          "value": "rgb(201,154,63)",
+          "hex": "#C99A3F",
+          "sha256": "1419f97766dbe12f1b0a9a69d48379ffc55ea1c3637420c9b967ff06cc26da70",
+          "source": "lightTheme.chromeYellow",
+          "source_expression": "rgb('#C99A3F')",
+          "source_line": 563
+        },
+        "contextBarSystem": {
+          "value": "rgb(34,48,95)",
+          "hex": "#22305F",
+          "sha256": "fd94885b63a7f62ce0c307dadd6bf362a0a3a718c8a3473ee383d878ae34457d",
+          "source": "MIST_BAR_RAMP.contextBarSystem",
+          "source_expression": "rgb('#22305F')",
+          "source_line": 313
+        },
+        "contextBarPrompt": {
+          "value": "rgb(43,61,120)",
+          "hex": "#2B3D78",
+          "sha256": "41cbf113302afe908295e868874f05941edab3fe277c28d7654704cd83741e53",
+          "source": "MIST_BAR_RAMP.contextBarPrompt",
+          "source_expression": "rgb('#2B3D78')",
+          "source_line": 314
+        },
+        "contextBarAssistant": {
+          "value": "rgb(52,74,146)",
+          "hex": "#344A92",
+          "sha256": "8b25cf38370301a9e63b29e349fe499bdf3472b0054888ffd1efca15ea14500f",
+          "source": "MIST_BAR_RAMP.contextBarAssistant",
+          "source_expression": "rgb('#344A92')",
+          "source_line": 315
+        },
+        "contextBarThinking": {
+          "value": "rgb(77,107,254)",
+          "hex": "#4D6BFE",
+          "sha256": "b47a0a338a1e1915af48f533062c89d610b0dc77f538ce0b947d74f81dc305c9",
+          "source": "MIST_BAR_RAMP.contextBarThinking",
+          "source_expression": "rgb('#4D6BFE')",
+          "source_line": 316
+        },
+        "contextBarTools": {
+          "value": "rgb(90,124,255)",
+          "hex": "#5A7CFF",
+          "sha256": "a4a8db5153dca1029fd09d032d6575a472fa607f09847e5b0694f6d0fdfb5a7b",
+          "source": "MIST_BAR_RAMP.contextBarTools",
+          "source_expression": "rgb('#5A7CFF')",
+          "source_line": 317
+        },
+        "ignition": {
+          "value": "rgb(30,95,235)",
+          "hex": "#1E5FEB",
+          "sha256": "9f4b98f77ca7aed6c866b413cb617f22fc4f94d231bc9d8793f695aeaff6bd07",
+          "source": "lightTheme.ignition",
+          "source_expression": "rgb('#1E5FEB')",
+          "source_line": 567
+        },
+        "ignitionDim": {
+          "value": "rgb(240,240,242)",
+          "hex": "#F0F0F2",
+          "sha256": "0877aa95faecde718038ef880ea81f4196de81d3aed7f4723f494636b68ba7a9",
+          "source": "lightTheme.ignitionDim",
+          "source_expression": "rgb('#F0F0F2')",
+          "source_line": 568
+        },
+        "cursor": {
+          "value": "",
+          "hex": null,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source": "lightTheme.cursor",
+          "source_expression": "''",
+          "source_line": 569
+        },
+        "mascotBody": {
+          "value": "rgb(217,138,99)",
+          "hex": "#D98A63",
+          "sha256": "5d9f18d8e011edd8a0db5b8de4e5c2c494d85a2e4dcbef40169f23a70ecd5aeb",
+          "source": "lightTheme.mascotBody",
+          "source_expression": "rgb('#D98A63')",
+          "source_line": 570
+        },
+        "inputBackground": {
+          "value": "rgb(246,243,237)",
+          "hex": "#F6F3ED",
+          "sha256": "f51d70f66cf4d9ae79f742ec6795a3c22ebd5915f286c26d9accb7d38ccbfd20",
+          "source": "lightTheme.inputBackground",
+          "source_expression": "rgb('#F6F3ED')",
+          "source_line": 571
+        },
+        "userMessageBackground": {
+          "value": "",
+          "hex": null,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source": "lightTheme.userMessageBackground",
+          "source_expression": "''",
+          "source_line": 572
+        },
+        "userMessageBackgroundHover": {
+          "value": "rgb(220,228,251)",
+          "hex": "#DCE4FB",
+          "sha256": "009268f757b616236c7bc85fef0bdf88112e101ce3fa39bd529815bb3c15bb62",
+          "source": "lightTheme.userMessageBackgroundHover",
+          "source_expression": "rgb('#DCE4FB')",
+          "source_line": 573
+        },
+        "messageActionsBackground": {
+          "value": "rgb(228,217,229)",
+          "hex": "#E4D9E5",
+          "sha256": "79fd83cc0a4eb84f7710721ed995a896bfbb4b598875e69d1f24de7d9dedf62a",
+          "source": "lightTheme.messageActionsBackground",
+          "source_expression": "rgb('#E4D9E5')",
+          "source_line": 574
+        },
+        "selectionBg": {
+          "value": "rgb(213,222,242)",
+          "hex": "#D5DEF2",
+          "sha256": "801abc37f48f8a77dc44608ff9d7d45addde1fc86fb11a60a021f2a34aa67df4",
+          "source": "lightTheme.selectionBg",
+          "source_expression": "rgb('#D5DEF2')",
+          "source_line": 575
+        },
+        "bashMessageBackgroundColor": {
+          "value": "rgb(234,225,211)",
+          "hex": "#EAE1D3",
+          "sha256": "be83685800d501ef92afc82ae283ca40d403035b410b2f4f1d8bd2747600f593",
+          "source": "lightTheme.bashMessageBackgroundColor",
+          "source_expression": "rgb('#EAE1D3')",
+          "source_line": 576
+        },
+        "memoryBackgroundColor": {
+          "value": "rgb(228,217,229)",
+          "hex": "#E4D9E5",
+          "sha256": "79fd83cc0a4eb84f7710721ed995a896bfbb4b598875e69d1f24de7d9dedf62a",
+          "source": "lightTheme.memoryBackgroundColor",
+          "source_expression": "rgb('#E4D9E5')",
+          "source_line": 577
+        },
+        "rate_limit_fill": {
+          "value": "rgb(125,161,222)",
+          "hex": "#7DA1DE",
+          "sha256": "aa07a05a35fd6c4b0ea9ea40cd29755c7f90a728fbab3cb501da7ff712cf113f",
+          "source": "lightTheme.rate_limit_fill",
+          "source_expression": "rgb('#7DA1DE')",
+          "source_line": 578
+        },
+        "rate_limit_empty": {
+          "value": "rgb(221,213,199)",
+          "hex": "#DDD5C7",
+          "sha256": "f88534f7a27914cd33f434d54c7eaf2331c37b67a962c94d5fb00bbeb58712e1",
+          "source": "lightTheme.rate_limit_empty",
+          "source_expression": "rgb('#DDD5C7')",
+          "source_line": 579
+        },
+        "fastMode": {
+          "value": "rgb(217,142,74)",
+          "hex": "#D98E4A",
+          "sha256": "8418e949e9517e135956313356c57730cd636857960387541f7b4ff709b8809d",
+          "source": "lightTheme.fastMode",
+          "source_expression": "rgb('#D98E4A')",
+          "source_line": 580
+        },
+        "fastModeShimmer": {
+          "value": "rgb(226,164,101)",
+          "hex": "#E2A465",
+          "sha256": "260deebf0d9253bc0cce1f081757a3d90d5e297198bf7367570616993aff69ee",
+          "source": "lightTheme.fastModeShimmer",
+          "source_expression": "rgb('#E2A465')",
+          "source_line": 581
+        },
+        "userPromptLabel": {
+          "value": "rgb(201,100,66)",
+          "hex": "#C96442",
+          "sha256": "7e2b83e382b54ab71d5e8f6c7391218df405fd782394c80f80829d6f346ade50",
+          "source": "lightTheme.userPromptLabel",
+          "source_expression": "rgb('#C96442')",
+          "source_line": 583
+        },
+        "subagentBullet": {
+          "value": "rgb(192,122,147)",
+          "hex": "#C07A93",
+          "sha256": "5ec9b632a1dd6c7ef07426e62d07e6ea94b391c7f6bbd6ad730a5b9e9773d029",
+          "source": "lightTheme.subagentBullet",
+          "source_expression": "rgb('#C07A93')",
+          "source_line": 584
+        },
+        "subagentDescription": {
+          "value": "rgb(52,57,69)",
+          "hex": "#343945",
+          "sha256": "4f04bc21e5051600736ebafaaa067d6e7f0f156012be1ca3a06a51c0e9f31371",
+          "source": "lightTheme.subagentDescription",
+          "source_expression": "rgb('#343945')",
+          "source_line": 585
+        },
+        "subagentModel": {
+          "value": "rgb(137,145,160)",
+          "hex": "#8991A0",
+          "sha256": "5ba5c9bad7b431f1490950cfc959c64c291597827803bced32dee79d06580d65",
+          "source": "lightTheme.subagentModel",
+          "source_expression": "rgb('#8991A0')",
+          "source_line": 586
+        },
+        "subagentElapsed": {
+          "value": "rgb(137,145,160)",
+          "hex": "#8991A0",
+          "sha256": "5ba5c9bad7b431f1490950cfc959c64c291597827803bced32dee79d06580d65",
+          "source": "lightTheme.subagentElapsed",
+          "source_expression": "rgb('#8991A0')",
+          "source_line": 587
+        },
+        "subagentToolName": {
+          "value": "rgb(63,108,196)",
+          "hex": "#3F6CC4",
+          "sha256": "621b3380c13385f5abfc8bdc969013171bad10e2ec1d69fe7365aed6f144009c",
+          "source": "lightTheme.subagentToolName",
+          "source_expression": "rgb('#3F6CC4')",
+          "source_line": 588
+        },
+        "subagentStatusRunning": {
+          "value": "rgb(63,108,196)",
+          "hex": "#3F6CC4",
+          "sha256": "621b3380c13385f5abfc8bdc969013171bad10e2ec1d69fe7365aed6f144009c",
+          "source": "lightTheme.subagentStatusRunning",
+          "source_expression": "rgb('#3F6CC4')",
+          "source_line": 589
+        },
+        "subagentStatusCompleted": {
+          "value": "rgb(78,150,117)",
+          "hex": "#4E9675",
+          "sha256": "0380327956d5f302eabe7990313655d051275b81d1de0492da22b589063791b4",
+          "source": "lightTheme.subagentStatusCompleted",
+          "source_expression": "rgb('#4E9675')",
+          "source_line": 590
+        },
+        "subagentStatusFailed": {
+          "value": "rgb(198,93,107)",
+          "hex": "#C65D6B",
+          "sha256": "1814fc77fccdf769e4fb5f87cc9a2832ea9197ce5483f46c90271d7a02821277",
+          "source": "lightTheme.subagentStatusFailed",
+          "source_expression": "rgb('#C65D6B')",
+          "source_line": 591
+        }
+      }
+    }
+  }
+}

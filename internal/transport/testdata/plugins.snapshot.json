@@ -1,0 +1,88 @@
+{
+  "schema": "dsh/transport-plugin-contract@1",
+  "baseCanonicalMethods": 25,
+  "methods": [
+    "plugin.list",
+    "plugin.install",
+    "plugin.enable",
+    "plugin.disable",
+    "plugin.uninstall",
+    "plugin.update",
+    "plugin.restore",
+    "plugin.reconcile"
+  ],
+  "types": {
+    "Plugin": [
+      "id",
+      "version",
+      "kind",
+      "entry",
+      "enabled",
+      "source",
+      "previousVersion"
+    ],
+    "ListResult": [
+      "plugins"
+    ],
+    "PluginResult": [
+      "plugin"
+    ],
+    "UninstallResult": [
+      "id",
+      "uninstalled"
+    ],
+    "ReconcileResult": [
+      "actions",
+      "recovered"
+    ],
+    "ReconcileAction": [
+      "transactionId",
+      "action",
+      "id",
+      "detail"
+    ]
+  },
+  "params": {
+    "plugin.list": [],
+    "plugin.install": [
+      "path"
+    ],
+    "plugin.enable": [
+      "id"
+    ],
+    "plugin.disable": [
+      "id"
+    ],
+    "plugin.uninstall": [
+      "id"
+    ],
+    "plugin.update": [
+      "id",
+      "path"
+    ],
+    "plugin.restore": [
+      "id",
+      "version"
+    ],
+    "plugin.reconcile": []
+  },
+  "http": {
+    "bareParams": true,
+    "successEnvelope": [
+      "result"
+    ],
+    "errorEnvelope": [
+      "error"
+    ],
+    "error": [
+      "code",
+      "message",
+      "hint",
+      "retryable"
+    ]
+  },
+  "ui": {
+    "implemented": false,
+    "mayFabricateFields": false
+  }
+}

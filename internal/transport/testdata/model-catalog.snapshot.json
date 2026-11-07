@@ -1,0 +1,46 @@
+{
+  "schema": "dshgo.model-catalog.snapshot@1",
+  "canonicalMethodsUnchanged": 25,
+  "methods": [
+    { "name": "models.catalog.list", "params": [], "result": "CatalogView" },
+    { "name": "models.catalog.upsert", "params": ["model", "credential?", "expectedRevision?"], "result": "CatalogView" },
+    { "name": "models.catalog.reorder", "params": ["ids", "expectedRevision?"], "result": "CatalogView" },
+    { "name": "models.catalog.test", "params": ["id", "baseURL?", "api?", "credential?"], "result": "TestResult" },
+    { "name": "models.catalog.set-active", "params": ["id", "expectedRevision?"], "result": "ActiveResult" }
+  ],
+  "types": {
+    "Error": ["code", "message", "hint", "retryable"],
+    "CatalogView": ["revision", "models", "credentials", "active"],
+    "Model": ["id", "name?", "owned_by?", "api?", "baseURL?", "apiKeyEnv?", "contextWindow?", "maxTokens?", "input?", "reasoningEfforts?", "unknownFieldsPreserved"],
+    "CredentialStatus": ["configured", "writable"],
+    "Active": ["id", "revision"],
+    "TestResult": ["id", "ok", "model?", "latencyMs"],
+    "ActiveResult": ["activeModel", "activeRevision", "revision"]
+  },
+  "storage": {
+    "catalog": "state/model-catalog.json",
+    "activeModel": "state/session-model.json reserved W61 settingsFormDefault/settingsFormRevision keys",
+    "secondActiveValue": false,
+    "credentialResponse": "configured/writable only; literal never returned"
+  },
+  "validation": {
+    "supportedAPI": "openai-completions",
+    "modelFields": "official fields plus preserved unknown fields; apiKey/credential/secret/token are forbidden in model objects",
+    "emptyCatalog": "list returns models=[]; reorder/test/set-active fail loudly",
+    "reorder": "nonempty exact ID permutation; model raw objects are not rebuilt"
+  },
+  "errors": {
+    "bad_request": 400,
+    "invalid_id": 400,
+    "invalid_field": 400,
+    "invalid_config": 400,
+    "credential_missing": 400,
+    "empty_catalog": 409,
+    "empty_order": 400,
+    "duplicate_id": 409,
+    "revision_conflict": 409,
+    "not_found": 404,
+    "upstream_error": 502,
+    "internal": 500
+  }
+}

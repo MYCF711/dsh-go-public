@@ -1,0 +1,81 @@
+{
+  "methods": [
+    "session.list",
+    "session.load",
+    "session.history",
+    "session.prompt",
+    "session.cancel",
+    "session.approve",
+    "session.create",
+    "session.delete",
+    "session.fork",
+    "session.compact",
+    "workspace.list",
+    "jobs.list",
+    "jobs.output",
+    "schedule.list",
+    "session.setModel",
+    "session.setPermission",
+    "models.list",
+    "session.setGoal",
+    "terminal.open",
+    "terminal.input",
+    "terminal.output",
+    "fs.read",
+    "fs.write",
+    "config.get",
+    "config.set"
+  ],
+  "types": {
+    "Message": [
+      "seq",
+      "role",
+      "text",
+      "tool",
+      "args",
+      "summary",
+      "time",
+      "usage",
+      "view",
+      "reasoning",
+      "v4Seq",
+      "messageId",
+      "content",
+      "callId",
+      "turn",
+      "step",
+      "isError",
+      "meta",
+      "structured"
+    ],
+    "SessionSummary": [
+      "id",
+      "title",
+      "titleExplicit",
+      "titleSource",
+      "cwd",
+      "updatedAt"
+    ],
+    "LoadResult": [
+      "messages",
+      "total",
+      "truncated",
+      "model",
+      "goal",
+      "permission",
+      "contentWidth",
+      "usageTotal",
+      "contextTokens",
+      "contextWindow",
+      "journalEpoch",
+      "lastSeq",
+      "cwd",
+      "effort",
+      "effortSelection"
+    ],
+    "PromptResult": [
+      "accepted",
+      "turnId"
+    ]
+  }
+}

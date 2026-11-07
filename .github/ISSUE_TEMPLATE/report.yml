@@ -1,0 +1,50 @@
+name: 报一个情况
+description: bug / 缺失 / 想法 —— 主理鱼按 AGENTS.md §10 处置
+title: "[类型] 一句话"
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        填清楚这三样，主理鱼才能动手；缺一样就只能先问你。
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 类型
+      options:
+        - bug（能复现）
+        - bug（复现不了）
+        - 功能请求（范围外）
+        - 文档/流程问题
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 版本
+      description: 二进制版本（如 0.2.1-go.5），或 git commit
+      placeholder: 0.2.1-go.5
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 命令 + 输入 + 期望 / 实际
+      placeholder: |
+        1. dshd run "..."
+        2. 期望 ...
+        3. 实际 ...
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: 报错原文
+      description: 原样粘贴，不要转述
+      render: text
+  - type: textarea
+    id: scope
+    attributes:
+      label: 你认为它属于哪个里程碑
+      description: 不确定就留空，主理鱼判断

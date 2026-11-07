@@ -1,0 +1,214 @@
+{
+  "schema": "dsh/transport-plugin-golden@1",
+  "templates": {
+    "PACKAGE_V1": "absolute path of the private v1 package; also expected as source",
+    "PACKAGE_V2": "absolute path of the private v2 package; also expected as source"
+  },
+  "steps": [
+    {
+      "name": "empty list",
+      "method": "plugin.list",
+      "request": {},
+      "status": 200,
+      "response": {
+        "result": {
+          "plugins": []
+        }
+      }
+    },
+    {
+      "name": "install is disabled by default",
+      "method": "plugin.install",
+      "request": {
+        "path": "{{PACKAGE_V1}}"
+      },
+      "status": 200,
+      "response": {
+        "result": {
+          "plugin": {
+            "id": "acme.audit",
+            "version": "1.0.0",
+            "kind": "wasm",
+            "entry": "plugin.wasm",
+            "enabled": false,
+            "source": "{{PACKAGE_V1}}"
+          }
+        }
+      }
+    },
+    {
+      "name": "list reports installed version and source",
+      "method": "plugin.list",
+      "request": {},
+      "status": 200,
+      "response": {
+        "result": {
+          "plugins": [
+            {
+              "id": "acme.audit",
+              "version": "1.0.0",
+              "kind": "wasm",
+              "entry": "plugin.wasm",
+              "enabled": false,
+              "source": "{{PACKAGE_V1}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "enable persists state",
+      "method": "plugin.enable",
+      "request": {
+        "id": "acme.audit"
+      },
+      "status": 200,
+      "response": {
+        "result": {
+          "plugin": {
+            "id": "acme.audit",
+            "version": "1.0.0",
+            "kind": "wasm",
+            "entry": "plugin.wasm",
+            "enabled": true,
+            "source": "{{PACKAGE_V1}}"
+          }
+        }
+      }
+    },
+    {
+      "name": "update retains previous version",
+      "method": "plugin.update",
+      "request": {
+        "id": "acme.audit",
+        "path": "{{PACKAGE_V2}}"
+      },
+      "status": 200,
+      "response": {
+        "result": {
+          "plugin": {
+            "id": "acme.audit",
+            "version": "2.0.0",
+            "kind": "wasm",
+            "entry": "plugin.wasm",
+            "enabled": true,
+            "source": "{{PACKAGE_V2}}",
+            "previousVersion": "1.0.0"
+          }
+        }
+      }
+    },
+    {
+      "name": "disable persists state",
+      "method": "plugin.disable",
+      "request": {
+        "id": "acme.audit"
+      },
+      "status": 200,
+      "response": {
+        "result": {
+          "plugin": {
+            "id": "acme.audit",
+            "version": "2.0.0",
+            "kind": "wasm",
+            "entry": "plugin.wasm",
+            "enabled": false,
+            "source": "{{PACKAGE_V2}}",
+            "previousVersion": "1.0.0"
+          }
+        }
+      }
+    },
+    {
+      "name": "restore selects retained package",
+      "method": "plugin.restore",
+      "request": {
+        "id": "acme.audit",
+        "version": "1.0.0"
+      },
+      "status": 200,
+      "response": {
+        "result": {
+          "plugin": {
+            "id": "acme.audit",
+            "version": "1.0.0",
+            "kind": "wasm",
+            "entry": "plugin.wasm",
+            "enabled": false,
+            "source": "{{PACKAGE_V1}}",
+            "previousVersion": "2.0.0"
+          }
+        }
+      }
+    },
+    {
+      "name": "reconcile without incomplete work",
+      "method": "plugin.reconcile",
+      "request": {},
+      "status": 200,
+      "response": {
+        "result": {
+          "actions": [],
+          "recovered": 0
+        }
+      }
+    },
+    {
+      "name": "uninstall removes persistent record",
+      "method": "plugin.uninstall",
+      "request": {
+        "id": "acme.audit"
+      },
+      "status": 200,
+      "response": {
+        "result": {
+          "id": "acme.audit",
+          "uninstalled": true
+        }
+      }
+    },
+    {
+      "name": "list is empty after uninstall",
+      "method": "plugin.list",
+      "request": {},
+      "status": 200,
+      "response": {
+        "result": {
+          "plugins": []
+        }
+      }
+    },
+    {
+      "name": "wrapped params are rejected",
+      "method": "plugin.list",
+      "request": {
+        "params": {}
+      },
+      "status": 400,
+      "response": {
+        "error": {
+          "code": "bad_request",
+          "message": "plugin.list 参数必须是裸对象，不接受 params 包装",
+          "hint": "直接发送该方法定义的参数对象",
+          "retryable": false
+        }
+      }
+    },
+    {
+      "name": "missing plugin has four field error",
+      "method": "plugin.enable",
+      "request": {
+        "id": "acme.missing"
+      },
+      "status": 404,
+      "response": {
+        "error": {
+          "code": "not_found",
+          "message": "插件 acme.missing 不存在",
+          "hint": "先调用 plugin.list 核对已安装 id",
+          "retryable": false
+        }
+      }
+    }
+  ]
+}

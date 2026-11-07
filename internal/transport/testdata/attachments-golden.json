@@ -1,0 +1,17 @@
+{
+  "attachment": {
+    "id": "att-0123456789abcdef0123456789abcdef",
+    "name": "note.txt",
+    "byteSize": 10,
+    "mime": "text/plain",
+    "sha256": "e678d23e17a2308662f3cc2ef1e1c5c787b7cb5b806f876dc4b6d0f3b2fa8d09"
+  },
+  "dataBase64": "cmVhbCB0ZXh0Cg==",
+  "content": [
+    {"type": "text", "text": "before"},
+    {"type": "attachment", "attachmentId": "att-0123456789abcdef0123456789abcdef"},
+    {"type": "reference", "referenceType": "file", "path": "C:/explicit/note.txt"},
+    {"type": "reference", "referenceType": "session", "sessionId": "session-target"},
+    {"type": "text", "text": "after"}
+  ]
+}

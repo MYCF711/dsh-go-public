@@ -1,0 +1,46 @@
+{
+  "schema": "dshgo.settings-form.snapshot@1",
+  "canonicalMethodsUnchanged": 25,
+  "methods": [
+    { "name": "settings.describe", "params": [], "result": "DescribeResult" },
+    { "name": "settings.mutate", "params": ["ns", "ops", "expectedRevision?"], "result": "NamespaceView" },
+    { "name": "settings.form.describe", "params": [], "result": "DescribeResult" },
+    { "name": "settings.form.get", "params": ["ns"], "result": "Section" },
+    { "name": "settings.form.set", "params": ["ns", "path", "value", "expectedRevision?"], "result": "Section" },
+    { "name": "settings.form.reset", "params": ["ns", "path?", "expectedRevision?"], "result": "Section" }
+  ],
+  "types": {
+    "Error": ["code", "message", "hint", "retryable"],
+    "PathOp": ["op", "path", "value (set only)"],
+    "NamespaceView": ["ns", "schema", "value", "base", "user?", "autoGenerate", "applies", "secrets", "revision"],
+    "DescribeResult": ["writable", "hasDocument", "namespaces", "sections", "errors"],
+    "Section": ["ns", "title", "writable", "revision", "fields", "errors"],
+    "Field": ["name", "path", "type", "current", "default", "overridden", "writable", "enum?", "minLength?", "maxLength?"]
+  },
+  "namespaces": {
+    "model": {
+      "field": "defaultModel",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "storage": "state/session-model.json"
+    },
+    "permission": {
+      "field": "defaultPreset",
+      "type": "string",
+      "enum": ["deny", "ask", "allow", "auto"],
+      "storage": "state/session-permission.json"
+    }
+  },
+  "errors": {
+    "bad_request": 400,
+    "invalid_path": 400,
+    "unknown_field": 400,
+    "invalid_enum": 400,
+    "out_of_range": 400,
+    "invalid_type": 400,
+    "not_found": 404,
+    "revision_conflict": 409,
+    "internal": 500
+  }
+}

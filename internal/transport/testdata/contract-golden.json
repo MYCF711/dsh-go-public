@@ -1,0 +1,44 @@
+{
+  "schema": "dsh/transport-contract-golden@1",
+  "http": {
+    "historyRequest": {
+      "id": "session-a",
+      "sinceSeq": 0,
+      "limit": 2,
+      "journalEpoch": 7
+    },
+    "staleEpoch": {
+      "request": {
+        "id": "session-a",
+        "sinceSeq": 8,
+        "limit": 2,
+        "journalEpoch": 6
+      },
+      "status": 409,
+      "error": {
+        "code": "stale_epoch",
+        "message": "journal 世代或水位对不上，需要重新 load 基线",
+        "hint": "丢弃旧水位，重新 session.load 拿 journalEpoch/lastSeq，再从 lastSeq 往后订阅（补洞只覆盖内存里还在的帧）",
+        "retryable": true
+      },
+      "journalEpoch": 7,
+      "lastSeq": 11
+    }
+  },
+  "sessions": [
+    {
+      "id": "session-a",
+      "journalEpoch": 7,
+      "framesFile": "ws-golden.jsonl",
+      "liveSeq": [1, 2, 3, 6, 7, 8, 9, 10, 11],
+      "pendingReplaySeq": []
+    },
+    {
+      "id": "session-b",
+      "journalEpoch": 11,
+      "framesFile": "ws-golden-b.jsonl",
+      "liveSeq": [1, 2, 3, 4, 5, 6],
+      "pendingReplaySeq": [6]
+    }
+  ]
+}

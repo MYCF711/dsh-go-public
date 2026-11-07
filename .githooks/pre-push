@@ -1,0 +1,27 @@
+#!/bin/sh
+# 禁止强推（非快进更新）。
+#
+# 为什么是 hook 而不是文档：2026-11-05 对 workbuddy-pro 的 headless-auto 分支
+# 做过一次 reset + 强推，丢掉两个提交（reflog 里两次 "update by push"）。
+# 评审记录必须连续，所以把这条做成机制而不是约定。
+#
+# 判据：远端已有的提交必须是本地新提交的祖先；不是 = 非快进 = 强推。
+# 新建分支（远端 sha 全 0）与删除分支不受此限，但仍受仓库规则约束。
+while read -r local_ref local_sha remote_ref remote_sha; do
+    case "$remote_sha" in
+        *[!0]*) ;;          # 远端已有提交 → 继续检查
+        *) continue ;;      # 远端是新建分支
+    esac
+    case "$local_sha" in
+        0000000000000000000000000000000000000000) continue ;;  # 删除分支
+    esac
+    if ! git merge-base --is-ancestor "$remote_sha" "$local_sha" 2>/dev/null; then
+        echo "" >&2
+        echo "✗ 拒绝推送：$remote_ref 是非快进更新（强推）。" >&2
+        echo "  规则：PR/协作分支永远追加新提交，不改写已推送历史。" >&2
+        echo "  如确需改写，先确认这是私有分支且没有他人基于它工作。" >&2
+        echo "" >&2
+        exit 1
+    fi
+done
+exit 0

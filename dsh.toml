@@ -1,0 +1,155 @@
+# dsh-go manifest —— 对应 DSH 的 cordis.patch.yml
+#
+# 语义：按 id 命中；`enabled = false` 禁用；config 是**整块替换**而不是 merge。
+# 激活顺序由能力依赖决定，本文件的书写顺序不承载语义。
+
+[profile]
+name = "default"
+
+[[module]]
+id      = "tools"
+backend = "static"
+
+[[module]]
+id      = "exec"
+backend = "static"
+
+[[module]]
+id      = "fs"
+backend = "static"
+
+[[module]]
+id      = "tool-read"
+backend = "static"
+
+[[module]]
+id      = "tool-write"
+backend = "static"
+
+[[module]]
+id      = "tool-edit"
+backend = "static"
+
+[[module]]
+id      = "tool-glob"
+backend = "static"
+
+[[module]]
+id      = "tool-grep"
+backend = "static"
+
+[[module]]
+id      = "history"
+backend = "static"
+
+[[module]]
+id      = "tool-history"
+backend = "static"
+
+[[module]]
+id      = "tool-wd"
+backend = "static"
+
+[[module]]
+id      = "tool-wsdeps"
+backend = "static"
+
+[[module]]
+id      = "tool-todo"
+backend = "static"
+
+[[module]]
+id      = "tool-plan"
+backend = "static"
+
+[[module]]
+id      = "tool-workflow"
+backend = "static"
+
+[[module]]
+id      = "tool-plugin"
+backend = "static"
+
+[[module]]
+id      = "tool-present"
+backend = "static"
+
+[[module]]
+id      = "tool-ask"
+backend = "static"
+
+[[module]]
+id      = "tool-webfetch"
+backend = "static"
+
+[[module]]
+id      = "search"
+backend = "static"
+
+[[module]]
+id      = "tool-websearch"
+backend = "static"
+
+[[module]]
+id      = "tool-readimage"
+backend = "static"
+
+[[module]]
+id      = "subagent"
+backend = "static"
+
+[[module]]
+id      = "tool-subagent"
+backend = "static"
+
+[[module]]
+id      = "tool-pwsh"
+backend = "static"
+
+[[module]]
+id      = "tool-github"
+backend = "static"
+
+[[module]]
+id      = "tool-repohere"
+backend = "static"
+
+[[module]]
+id      = "tool-execlit"
+backend = "static"
+
+[[module]]
+id      = "tool-nowline"
+backend = "static"
+
+[[module]]
+id      = "tool-teamtask"
+backend = "static"
+
+[[module]]
+id      = "tool-team"
+backend = "static"
+
+[[module]]
+id      = "tool-goal"
+backend = "static"
+
+[[module]]
+id      = "tool-schedule"
+backend = "static"
+
+[[module]]
+id      = "tool-watch"
+backend = "static"
+
+[[module]]
+id      = "tool-unlag"
+
+[[module]]
+id      = "tool-subagentfork"
+
+[[module]]
+id      = "tool-skill"
+
+[[module]]
+id      = "tool-hindsight"

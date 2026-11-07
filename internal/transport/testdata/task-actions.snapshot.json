@@ -1,0 +1,27 @@
+{
+  "canonicalMethodsUnchanged": 25,
+  "methods": {
+    "schedule.delete": {
+      "params": ["sessionId", "id", "expectedRevision?"],
+      "result": ["sessionId", "id", "deleted", "remaining", "revision"]
+    },
+    "schedule.clear": {
+      "params": [],
+      "result": ["deleted", "revisions", "schedules"],
+      "semantics": "delete only Host-ended records, preserve active work, then authoritative readback"
+    },
+    "jobs.output": {
+      "params": ["sessionId", "id", "waitMs?", "cursor?", "limit?"],
+      "result": ["id", "sessionId", "output", "done", "exit_code", "cwd?", "cursor", "nextCursor", "hasMore", "total"],
+      "cursorUnit": "Unicode code point",
+      "defaultLimit": 16384,
+      "maxLimit": 65536
+    },
+    "jobs.stop": {
+      "params": ["sessionId", "id"],
+      "result": ["id", "sessionId", "stopped", "done", "exit_code"]
+    }
+  },
+  "error": ["code", "message", "hint", "retryable"],
+  "authentication": "existing launch token to cookie flow; POST bare params"
+}

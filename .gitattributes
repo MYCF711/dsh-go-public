@@ -1,0 +1,15 @@
+# 仓库统一 LF：gofmt 在 CRLF 工作区会误报“未格式化”，CI 会红。
+* text=auto eol=lf
+
+*.go   text eol=lf
+*.sh   text eol=lf
+*.yml  text eol=lf
+*.md   text eol=lf
+*.toml text eol=lf
+
+# 二进制与生成物不参与行尾转换
+*.tgz  binary
+*.exe  binary
+*.wasm binary
+*.png  binary
+*.zstd binary

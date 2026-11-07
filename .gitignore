@@ -1,0 +1,10 @@
+/dist/
+/bin/
+*.exe
+*.log
+*.tmp
+tmp/
+refs/dsc/
+.idea/
+.vscode/
+__pycache__/

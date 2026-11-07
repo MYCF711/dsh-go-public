@@ -1,0 +1,5 @@
+# 这个仓库里"不该被统计扫到"的东西。
+# glob / grep 会跳过这里的条目；bash 里的命令不受影响（那是真实 shell）。
+refs
+research
+evidence

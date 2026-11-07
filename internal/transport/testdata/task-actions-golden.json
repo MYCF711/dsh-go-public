@@ -1,0 +1,58 @@
+[
+  {
+    "name": "schedule delete persisted",
+    "method": "schedule.delete",
+    "body": {"sessionId":"session-a","id":"sch-1","expectedRevision":"rev-old"},
+    "status": 200,
+    "response": {"result":{"sessionId":"session-a","id":"sch-1","deleted":true,"remaining":1,"revision":"rev-new"}}
+  },
+  {
+    "name": "schedule delete missing",
+    "method": "schedule.delete",
+    "body": {"sessionId":"session-a","id":"missing"},
+    "status": 404,
+    "response": {"error":{"code":"not_found","message":"missing schedule","hint":"检查请求路径与 HTTP 方法；要找的会话/文件/id 可能已经不在了（先 session.list 或 workspace.list 确认）","retryable":false}}
+  },
+  {
+    "name": "schedule delete conflict",
+    "method": "schedule.delete",
+    "body": {"sessionId":"session-a","id":"conflict","expectedRevision":"stale"},
+    "status": 409,
+    "response": {"error":{"code":"revision_conflict","message":"stale revision","hint":"重新 schedule.list 读取最新 revision，再基于最新内容重试；不要覆盖别人的修改","retryable":false}}
+  },
+  {
+    "name": "schedule clear ended and readback",
+    "method": "schedule.clear",
+    "body": {},
+    "status": 200,
+    "response": {"result":{"deleted":1,"revisions":{"session-a":"rev-clear"},"schedules":[]}}
+  },
+  {
+    "name": "jobs output second page",
+    "method": "jobs.output",
+    "body": {"sessionId":"session-a","id":"job-1","cursor":2,"limit":2},
+    "status": 200,
+    "response": {"result":{"id":"job-1","sessionId":"session-a","output":"cd","done":false,"exit_code":0,"cursor":2,"nextCursor":4,"hasMore":true,"total":6}}
+  },
+  {
+    "name": "jobs stop running",
+    "method": "jobs.stop",
+    "body": {"sessionId":"session-a","id":"job-1"},
+    "status": 200,
+    "response": {"result":{"id":"job-1","sessionId":"session-a","stopped":true,"done":true,"exit_code":-1}}
+  },
+  {
+    "name": "jobs stop ended",
+    "method": "jobs.stop",
+    "body": {"sessionId":"session-a","id":"ended"},
+    "status": 409,
+    "response": {"error":{"code":"job_finished","message":"already ended","hint":"任务已经结束，只能 jobs.output 读取保留输出，不能重复停止","retryable":false}}
+  },
+  {
+    "name": "jobs stop cross session",
+    "method": "jobs.stop",
+    "body": {"sessionId":"session-b","id":"job-1"},
+    "status": 403,
+    "response": {"error":{"code":"cross_session","message":"wrong owner","hint":"只能操作当前 home、当前会话且由本宿主启动的任务；先核对 sessionId 与 jobs.list","retryable":false}}
+  }
+]

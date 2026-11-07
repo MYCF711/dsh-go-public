@@ -1,0 +1,51 @@
+{
+  "schema": "dshgo.effort-goal.snapshot@1",
+  "canonicalMethodsUnchanged": 25,
+  "methods": [
+    {
+      "name": "session.setEffort",
+      "params": {"id": "session-id", "effort": "catalog-level-key-or-empty"},
+      "result": {"ok": true}
+    },
+    {
+      "name": "session.goal.get",
+      "params": {"id": "session-id"},
+      "result": {"goal": "GoalSnapshot|null", "roundsStarted": "non-negative integer, omitted when unknown"}
+    },
+    {
+      "name": "session.goal.pause",
+      "params": {"id": "session-id"},
+      "result": {"ok": true}
+    },
+    {
+      "name": "session.goal.resume",
+      "params": {"id": "session-id"},
+      "result": {"ok": true}
+    }
+  ],
+  "loadResultKeys": [
+    "messages",
+    "total",
+    "truncated",
+    "model",
+    "goal",
+    "permission",
+    "contentWidth",
+    "usageTotal",
+    "contextTokens",
+    "contextWindow",
+    "journalEpoch",
+    "lastSeq",
+    "cwd",
+    "effort",
+    "effortSelection"
+  ],
+  "goalSnapshotKeys": ["id", "revision", "objective", "phase", "maxGoalRounds", "blockedReason?", "budget?"],
+  "goalChange": {
+    "type": "goal/change",
+    "kind": "goal/change",
+    "version": 1,
+    "operations": ["create", "edit", "clear", "pause", "resume", "round"],
+    "roundRequiresRealContinuation": true
+  }
+}

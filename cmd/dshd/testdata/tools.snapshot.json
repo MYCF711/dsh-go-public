@@ -1,0 +1,1510 @@
+[
+  {
+    "name": "ask_user_question",
+    "description": "向人提问（可一次问多个）并等回答，本轮到此结束。需要人拍板时用，别自己猜。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "questions": {
+          "type": "array",
+          "description": "要先问人的问题；一次问全，别挤成多轮",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "这个问题的稳定 id；回答里会回显"
+              },
+              "question": {
+                "type": "string",
+                "description": "具体要问的那句话"
+              },
+              "header": {
+                "type": "string",
+                "description": "可选的短标题，例如「确认」「选模式」"
+              },
+              "options": {
+                "type": "array",
+                "description": "可选候选；推荐项放第一个并在标签后加「（推荐）」",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "description": "给人看的一句话选项"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "这个选择的取舍，可选"
+                    }
+                  },
+                  "required": [
+                    "label"
+                  ],
+                  "additionalProperties": true
+                }
+              },
+              "multi_select": {
+                "type": "boolean",
+                "description": "能不能多选，默认不能"
+              }
+            },
+            "required": [
+              "id",
+              "question"
+            ],
+            "additionalProperties": true
+          }
+        }
+      },
+      "required": [
+        "questions"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "bash",
+    "description": "在持久 bash 会话里执行命令，cwd 跨命令保留；无输出超时就转后台。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "command": {
+          "type": "string",
+          "description": "要执行的 bash 命令；cwd 跨命令保留"
+        },
+        "description": {
+          "type": "string",
+          "description": "这段命令干什么，5-10 个字，给用户看的（例如「列出当前目录」）"
+        },
+        "idle_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 900,
+          "description": "多久无输出转后台，默认 600"
+        },
+        "run_in_background": {
+          "type": "boolean",
+          "description": "立刻转后台并返回 job_id，不等命令结束（长任务用这个，别去调小 idle_seconds）"
+        },
+        "sandbox_permissions": {
+          "type": "string",
+          "enum": [
+            "workspace-write",
+            "danger-full-access"
+          ],
+          "description": "可选：仅本次调用的 sandbox 请求。danger-full-access 需要先经审批；不会改变会话档位"
+        }
+      },
+      "required": [
+        "command",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true,
+      "executes": true
+    }
+  },
+  {
+    "name": "create_goal",
+    "description": "为需要多轮才能完成的事建一个跨会话存活的目标。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "objective": {
+          "type": "string",
+          "description": "这个长程目标要达成什么，一句话说清"
+        },
+        "max_goal_rounds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000,
+          "description": "允许的总轮次上限，可省略，默认 256"
+        }
+      },
+      "required": [
+        "objective"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "edit",
+    "description": "把文件中的 old_string 逐字替换为 new_string；要求唯一匹配，多处须显式 replace_all。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "description": "文件路径（正斜杠，相对工作区根）"
+        },
+        "old_string": {
+          "type": "string",
+          "description": "要被替换的原文，必须逐字匹配（含缩进）"
+        },
+        "new_string": {
+          "type": "string",
+          "description": "替换后的内容"
+        },
+        "replace_all": {
+          "type": "boolean",
+          "description": "默认 false：old_string 在文件里必须唯一"
+        }
+      },
+      "required": [
+        "file_path",
+        "old_string",
+        "new_string"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "enter_plan_mode",
+    "description": "进入计划模式：此后只能读和想，不能改盘、不能跑命令。把方案想清楚再用 exit_plan_mode 提交给人批。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string",
+          "description": "一句话说明要规划什么（可选）"
+        }
+      },
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "exec_literal",
+    "description": "直接运行 .exe，参数逐个原样传入、不被 Git-Bash 转换。适合 ipconfig /all。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "program": {
+          "type": "string",
+          "description": ".exe 的绝对路径，例如 C:/Windows/System32/ipconfig.exe"
+        },
+        "args": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "可选：逐个原样传给程序的参数，不拆分、不转义"
+        },
+        "timeout_seconds": {
+          "type": "integer",
+          "description": "可选：超时秒数，默认 60，上限 600"
+        }
+      },
+      "required": [
+        "program"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true,
+      "executes": true
+    }
+  },
+  {
+    "name": "exit_plan_mode",
+    "description": "提交方案并退出计划模式。把 markdown 方案正文放进 plan；提交后本轮结束、控制权交回人。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "plan": {
+          "type": "string",
+          "description": "方案正文（markdown）"
+        }
+      },
+      "required": [
+        "plan"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "get_goal",
+    "description": "查当前会话的目标和 revision；改目标前先调它。",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "github",
+    "description": "调 GitHub REST API（path 如 repos/o/r/issues）。写方法要 confirm 与令牌。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "GitHub API 路径，不带前导斜杠，如 repos/o/r/issues"
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "GET",
+            "POST",
+            "PATCH",
+            "PUT",
+            "DELETE"
+          ],
+          "description": "HTTP 方法，默认 GET；写方法必须带 confirm"
+        },
+        "body": {
+          "type": "string",
+          "description": "写操作的 JSON 请求体（字符串形式）"
+        },
+        "confirm": {
+          "type": "boolean",
+          "description": "写操作必须为 true，否则直接拒绝"
+        }
+      },
+      "required": [
+        "path"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true,
+      "network": true
+    }
+  },
+  {
+    "name": "glob",
+    "description": "按 glob 模式找文件（支持 **），只返回路径；自动跳过 .git/refs/node_modules。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "description": "glob 模式（相对 path），支持 ** 跨目录，如 **/*.go"
+        },
+        "path": {
+          "type": "string",
+          "description": "起始目录，默认工作区根"
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "最多返回多少条，默认 200"
+        }
+      },
+      "required": [
+        "pattern"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "grep",
+    "description": "按 Go 正则搜内容，返回 文件:行:文本；自动跳过 .git/refs/node_modules，比 bash grep -r 准。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "description": "Go 正则语法"
+        },
+        "path": {
+          "type": "string",
+          "description": "起始目录，默认工作区根"
+        },
+        "include": {
+          "type": "string",
+          "description": "只搜匹配该 glob 的文件，如 **/*.go"
+        },
+        "ignore_case": {
+          "type": "boolean",
+          "description": "默认 false"
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "最多返回多少条匹配，默认 100"
+        }
+      },
+      "required": [
+        "pattern"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "hindsight_capture_initiative",
+    "description": "把一个倡议记成一页记忆（标题 + 两三句在做什么、为什么）；先记下来，以后再搜。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "倡议名词，短"
+        },
+        "summary": {
+          "type": "string",
+          "description": "两三句：在做什么、为什么"
+        }
+      },
+      "required": [
+        "title",
+        "summary"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "hindsight_ingest_document",
+    "description": "把一段结论/踩坑/约定存进本机记忆，下次能按 id 捞回来；趁还记得时用。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "这段记忆叫什么，会参与生成 id"
+        },
+        "content": {
+          "type": "string",
+          "description": "要记住的正文"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "可选标签"
+        }
+      },
+      "required": [
+        "title",
+        "content"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "hindsight_list_knowledge_pages",
+    "description": "列出本机存过的记忆（id、标题、字数，新→旧）；不确定有哪些记忆时先用它。",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "hindsight_read_knowledge_page",
+    "description": "按 id 读一份记忆的正文全文；已知 id、要看完整内容时用它。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "page_id": {
+          "type": "string",
+          "description": "文档 id，先用 list/search 拿到（DSH 的叫法）"
+        },
+        "id": {
+          "type": "string",
+          "description": "同上，另一种叫法；两个都给时以 page_id 为准"
+        }
+      },
+      "required": [
+        "page_id"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "hindsight_search_knowledge_pages",
+    "description": "按关键词搜本机记忆（标题×3 tags×2 正文×1 计分，降序）；记得大概内容但忘了 id 时用它。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "要搜什么；空格分隔多个词，标题×3 tags×2 正文×1 计分"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "最多返回几条；缺省 5，上限 20"
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "history_search",
+    "description": "在原始日志里按关键词回查（含已被压缩遮蔽的内容）；想找回「之前那段细节」时用。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "要回查的关键词（字面匹配，大小写敏感）"
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50,
+          "description": "最多返回多少条，默认 10"
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "interrupt_agent",
+    "description": "给名单里的队友打中断标记：它会在下一回合边界停下，已排队的消息保留。这是标记，不是杀进程。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string",
+          "description": "要中断的队友名"
+        }
+      },
+      "required": [
+        "target"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "job_kill",
+    "description": "终止一个后台任务。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "job_id": {
+          "type": "string",
+          "description": "任务 id"
+        },
+        "reason": {
+          "type": "string",
+          "description": "可选：记录在日志里并转发给任务"
+        }
+      },
+      "additionalProperties": false
+    },
+    "caps": {
+      "destructive": true
+    }
+  },
+  {
+    "name": "job_list",
+    "description": "列出后台任务及其状态。",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "job_output",
+    "description": "取后台任务输出（可短等）。任务没结束也能反复取。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "job_id": {
+          "type": "string",
+          "description": "任务 id，如 job-1"
+        },
+        "wait": {
+          "type": "boolean",
+          "description": "是否阻塞等待任务结束，默认 false"
+        },
+        "timeout_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 120000,
+          "description": "wait=true 时最多等多少毫秒，默认 30000"
+        }
+      },
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "list_agents",
+    "description": "列出用过信箱的会话和各自消息数，看谁在等你，或核对会话 id 有没有写错。",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "load_workspace_dependencies",
+    "description": "查 Python/Node/pnpm 路径与 numpy/pandas/openpyxl/docx/pptx/Pillow/lxml 版本（会起子进程，deny 策略下会被拒）",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "caps": {
+      "executes": true
+    }
+  },
+  {
+    "name": "now_line",
+    "description": "当前时间、日期、时区名与星期，一次拿全；别为这个跑 bash date。",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "plugin",
+    "description": "看/开/关本仓的模块（dsh.toml 里的 [[module]]）：list 列出，enable/disable 改配置（下次启动生效）。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "list",
+            "enable",
+            "disable"
+          ],
+          "description": "list=看有哪些模块；enable/disable=改 manifest（下次启动生效）"
+        },
+        "id": {
+          "type": "string",
+          "description": "模块 id，例如 tool-watch。enable/disable 时必填"
+        }
+      },
+      "required": [
+        "action"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "present",
+    "description": "把已存在的文件声明为交付物（不复制内容）。人需要单独打开某个文件时用。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "files": {
+          "type": "array",
+          "description": "通常 1-2 个最重要的交付物；一次最多 4 个",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "description": "已存在文件的路径（相对当前工作目录）"
+              },
+              "description": {
+                "type": "string",
+                "description": "给人看的一句话说明"
+              }
+            },
+            "required": [
+              "path"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "files"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "pwsh",
+    "description": "执行 PowerShell 命令（优先 pwsh，退回 powershell）。查系统、跑脚本时用。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "command": {
+          "type": "string",
+          "description": "要执行的 PowerShell 命令（一条或多条，用分号分隔）"
+        },
+        "workdir": {
+          "type": "string",
+          "description": "可选：工作目录（相对当前工作目录），默认当前目录"
+        },
+        "timeout_seconds": {
+          "type": "integer",
+          "description": "可选：超时秒数，默认 120，上限 600"
+        },
+        "sandbox_permissions": {
+          "type": "string",
+          "enum": [
+            "workspace-write",
+            "danger-full-access"
+          ],
+          "description": "可选：仅本次调用的 sandbox 请求。danger-full-access 需要先经审批；不会改变会话档位"
+        }
+      },
+      "required": [
+        "command"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true,
+      "executes": true
+    }
+  },
+  {
+    "name": "read",
+    "description": "读文件（按行窗口）。改文件前必须先读；大文件用 offset/limit 分段。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "description": "文件路径（正斜杠，相对工作区根）"
+        },
+        "offset": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "起始行号（1 基），默认 1"
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "最多返回多少行，默认 2000"
+        }
+      },
+      "required": [
+        "file_path"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "read_image",
+    "description": "读取一张图片交给模型看（PNG/JPEG/WebP/GIF）。要看图时用，不要自己造缩略图。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "description": "图片文件路径（相对当前工作目录）"
+        }
+      },
+      "required": [
+        "file_path"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "repo_here",
+    "description": "报告当前目录属于哪个 GitHub 仓库（owner/name 与分支）。",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "schedule_create",
+    "description": "登记定时任务（every/daily/weekly），算出下次触发时间。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "一句话名字，最多 120 字"
+        },
+        "prompt": {
+          "type": "string",
+          "description": "到点时要交给模型的话（祈使句）"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "every",
+            "daily",
+            "weekly"
+          ],
+          "description": "调度方式：every=每 N 秒；daily=每天某时刻；weekly=每周若干天的某时刻"
+        },
+        "every_seconds": {
+          "type": "integer",
+          "description": "kind=every 时必填，\u003e= 60"
+        },
+        "allow_writes": {
+          "type": "boolean",
+          "description": "默认 false：到点只跑只读工具。设 true 才会在无人值守时执行写操作，用户要清楚后果"
+        },
+        "daily_at": {
+          "type": "string",
+          "description": "kind=daily 时必填，本地时区 HH:MM，如 09:30"
+        },
+        "weekly_at": {
+          "type": "string",
+          "description": "kind=weekly 时必填，本地时区 HH:MM，如 09:30"
+        },
+        "weekdays": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "kind=weekly 时必填，0=周日 .. 6=周六，可多选"
+        }
+      },
+      "required": [
+        "title",
+        "prompt",
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "schedule_delete",
+    "description": "按 id 删掉一条定时任务。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "要删的定时任务 id"
+        }
+      },
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "schedule_list",
+    "description": "列出本会话的定时任务，按下次触发时间升序。",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "schedule_update",
+    "description": "按 id 改定时任务；改时间字段会重算下次时间。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "要改的定时任务 id，形如 sch-0001-3f9a"
+        },
+        "title": {
+          "type": "string",
+          "description": "新名字，最多 120 字"
+        },
+        "prompt": {
+          "type": "string",
+          "description": "新提示词"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "every",
+            "daily",
+            "weekly"
+          ]
+        },
+        "every_seconds": {
+          "type": "integer",
+          "description": "kind=every 时间隔秒数，\u003e= 60"
+        },
+        "daily_at": {
+          "type": "string",
+          "description": "kind=daily 时的 HH:MM，本地时区"
+        },
+        "weekly_at": {
+          "type": "string",
+          "description": "kind=weekly 时的 HH:MM，本地时区"
+        },
+        "weekdays": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "kind=weekly 时的星期集合，0=周日"
+        }
+      },
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "send_message",
+    "description": "给另一个会话留一条消息，等它用 wait_agent 取走；要叫醒别人时用。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "agent_id": {
+          "type": "string",
+          "description": "目标会话 id，例如 acp-aaa"
+        },
+        "target": {
+          "type": "string",
+          "description": "同 agent_id，DSH 的写法"
+        },
+        "message": {
+          "type": "string",
+          "description": "消息正文"
+        }
+      },
+      "required": [
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "skill",
+    "description": "按名字加载本机已安装的 skill 正文（\u003cdir\u003e/\u003cname\u003e/SKILL.md）。当某类任务的做法写在 skill 说明里、你需要那份步骤再动手时，先用它取全文。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "skill 名。省略则列出本机所有 skill（名字 + 一句话说明）"
+        }
+      },
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "spawn_teammate",
+    "description": "在团队名单里登记一个具名队友，之后可以反复给它派任务而不用重述背景。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "队友名字：小写字母开头，只含小写字母/数字/连字符"
+        },
+        "description": {
+          "type": "string",
+          "description": "这个队友负责什么，最多 120 字"
+        },
+        "context": {
+          "type": "string",
+          "enum": [
+            "fresh",
+            "fork"
+          ],
+          "description": "可选，默认 fresh"
+        },
+        "prompt": {
+          "type": "string",
+          "description": "给它的第一条任务"
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "prompt"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "subagent",
+    "description": "把一件独立的事交给子代理跑（它有自己的上下文），只拿结果回来。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "continuable": {
+          "type": "boolean",
+          "description": "true = 留下一条可续问的子会话（父轮结束后可以用 subagents.prompt 续问）；省略 = 不可续问（默认，不写任何额外的东西）"
+        },
+        "cwd": {
+          "type": "string",
+          "description": "子代理的初始工作目录；相对路径按当前目录算，省略表示继承"
+        },
+        "description": {
+          "type": "string",
+          "description": "3-5 个词的短描述，给人看"
+        },
+        "prompt": {
+          "type": "string",
+          "description": "完整、自包含的任务；子代理看不到本会话的历史"
+        }
+      },
+      "required": [
+        "description",
+        "prompt"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "subagent_fork",
+    "description": "派一个能看到本会话上下文的子代理去办一件事；它只回结果，不带回中间步骤。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "cwd": {
+          "type": "string",
+          "description": "子代理的初始工作目录；相对路径按当前目录算，省略表示继承"
+        },
+        "description": {
+          "type": "string",
+          "description": "3-5 个词的短描述，给人看"
+        },
+        "prompt": {
+          "type": "string",
+          "description": "任务本身；子代理能看到本会话最近的对话"
+        }
+      },
+      "required": [
+        "description",
+        "prompt"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "team_task_create",
+    "description": "建一条团队任务并返回 id；分工前先建任务。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "subject": {
+          "type": "string",
+          "description": "一句话目标，祈使句"
+        },
+        "description": {
+          "type": "string",
+          "description": "细节与验收标准"
+        },
+        "blocked_by": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "依赖的任务 id；它们没完成前不该开工"
+        }
+      },
+      "required": [
+        "subject",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "team_task_get",
+    "description": "按 id 取一条任务：内容、认领人、未完成依赖。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "description": "任务 id，形如 task-0001-3f9a"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "team_task_list",
+    "description": "列出任务，可按 status 过滤；开工前先看板子。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "in_progress",
+            "completed"
+          ],
+          "description": "只看这个状态；省略表示全部"
+        }
+      },
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "team_task_update",
+    "description": "改任务：claim 认领、complete 完成、delete 删除等七个动作。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "description": "任务 id，形如 task-0001-3f9a"
+        },
+        "expected_revision": {
+          "type": "integer",
+          "description": "可选：DSH 契约里的版本号参数；本实现暂不校验（改前先 team_task_get 看最新状态）"
+        },
+        "action": {
+          "type": "string",
+          "enum": [
+            "claim",
+            "release",
+            "complete",
+            "reopen",
+            "edit",
+            "set_dependencies",
+            "delete"
+          ],
+          "description": "claim=认领并置 in_progress；release=退回 pending 并清 owner；complete=完成；reopen=重开；edit=改 subject/description；set_dependencies=整份替换 blocked_by；delete=删除"
+        },
+        "owner": {
+          "type": "string",
+          "description": "claim 必填：你的名字或角色"
+        },
+        "force": {
+          "type": "boolean",
+          "description": "action=delete 专用：强行删掉别人认领的任务（会进归档）"
+        },
+        "subject": {
+          "type": "string",
+          "description": "action=edit 时传，才改"
+        },
+        "description": {
+          "type": "string",
+          "description": "action=edit 时传，才改（传空串表示清空）"
+        },
+        "blocked_by": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "action=set_dependencies 时必填：整份替换（空数组=清空依赖）"
+        }
+      },
+      "required": [
+        "task_id",
+        "action"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "todo_write",
+    "description": "记录或更新任务清单（整份替换）。多步骤工作时用它把计划摆出来、让人看得见进度。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "todos": {
+          "type": "array",
+          "description": "完整的任务清单，替换掉之前的清单",
+          "items": {
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string",
+                "description": "任务是什么——一句祈使句"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "pending",
+                  "in_progress",
+                  "completed"
+                ],
+                "description": "pending（没开始）| in_progress（正在做）| completed（做完了）"
+              }
+            },
+            "required": [
+              "content",
+              "status"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "todos"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "unlag_refresh",
+    "description": "界面看起来卡住或不刷新时按一下；同一个 request_id 只生效一次，重复调用会告诉你已经刷过。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "request_id": {
+          "type": "string",
+          "description": "这次刷新的名字；同一个名字只生效一次。不传就用会话 id"
+        }
+      },
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "update_goal",
+    "description": "改目标：edit/pause/resume/complete/blocked，要带最新 revision。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "goal_id": {
+          "type": "string",
+          "description": "从 get_goal 原样抄来的目标 id"
+        },
+        "revision": {
+          "type": "integer",
+          "description": "从 get_goal 原样抄来的当前 revision"
+        },
+        "action": {
+          "type": "string",
+          "enum": [
+            "edit",
+            "pause",
+            "resume",
+            "complete",
+            "blocked"
+          ],
+          "description": "edit 改 objective/max_goal_rounds；pause/resume 暂停或恢复；complete 完成；blocked 需给 blocked_reason"
+        },
+        "objective": {
+          "type": "string",
+          "description": "action=edit 时传，才改"
+        },
+        "max_goal_rounds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000,
+          "description": "action=edit 时传，才改"
+        },
+        "blocked_reason": {
+          "type": "string",
+          "description": "action=blocked 时必填：具体卡在哪"
+        }
+      },
+      "required": [
+        "revision",
+        "action"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "wait_agent",
+    "description": "取自己信箱里的新消息，有就立刻返回，超时返回空列表；接手别人的活之前用。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "timeout_seconds": {
+          "type": "integer",
+          "description": "最多等多少秒，默认 60，上限 300"
+        }
+      },
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "watch_ack",
+    "description": "打完标后调它，把已处理水位推进到这批编号的最大值。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "repo": {
+          "type": "string",
+          "description": "要记帐的仓库，形如 owner/name"
+        },
+        "numbers": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "已处理完的 issue/PR 编号"
+        },
+        "confirm_skip": {
+          "type": "boolean",
+          "description": "跳过的编号超过 3 个时必须显式确认：水位跳过去的编号以后不会再被处理"
+        }
+      },
+      "required": [
+        "numbers"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "watch_doctor",
+    "description": "体检：gh 登录、仓库权限、打标标签是否存在。登记完先跑它，别等轮询时才炸。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "repo": {
+          "type": "string",
+          "description": "要记帐的仓库，形如 owner/name"
+        },
+        "numbers": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "已处理完的 issue/PR 编号"
+        },
+        "confirm_skip": {
+          "type": "boolean",
+          "description": "跳过的编号超过 3 个时必须显式确认：水位跳过去的编号以后不会再被处理"
+        }
+      },
+      "required": [
+        "numbers"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "executes": true,
+      "network": true
+    }
+  },
+  {
+    "name": "watch_start",
+    "description": "要开始盯一个新仓库时用它登记，之后由 dshd watch check 轮询。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "repo": {
+          "type": "string",
+          "description": "要盯的仓库，形如 owner/name"
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "可选：只盯带这些标签的 issue/PR"
+        },
+        "ignore_labels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "可选：带这些标签的一律跳过"
+        },
+        "only_assigned": {
+          "type": "boolean",
+          "description": "可选：只看指派给我的"
+        },
+        "ack_label": {
+          "type": "string",
+          "description": "可选：处理完要打的标签，默认「已处理」"
+        }
+      },
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "watch_status",
+    "description": "看当前在盯哪些仓库、各自已处理到第几个编号。",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "watch_stop",
+    "description": "不再盯某个仓库时把它从名单里摘掉。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "repo": {
+          "type": "string",
+          "description": "要停掉的仓库，形如 owner/name"
+        }
+      },
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  },
+  {
+    "name": "web_fetch",
+    "description": "取一个 HTTP(S) 网页的正文并解码成文本。要看具体某个链接的内容时用。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "要取的 HTTP(S) URL"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "network": true
+    }
+  },
+  {
+    "name": "web_search",
+    "description": "联网搜索，返回摘要答案与来源链接。要知道「网上现在怎么说」时用。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "queries": {
+          "type": "array",
+          "description": "1–4 条查询；结果会合并去重",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "queries"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "network": true
+    }
+  },
+  {
+    "name": "workflow",
+    "description": "把一串工具调用写成步骤表一次跑完：前一步结果可用 ${var} 喂给后一步，省掉来回往返。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "script": {
+          "type": "string",
+          "description": "JSON 步骤表：[{\"tool\":\"grep\",\"args\":{…},\"save\":\"hit\"}]；后一步可用 ${hit} 引用前一步结果"
+        },
+        "meta": {
+          "type": "object",
+          "description": "可选的元信息，原样回显在结果里，便于调用方对账"
+        }
+      },
+      "required": [
+        "script"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "working_directory",
+    "description": "查看或切换当前工作目录（影响 read/write/glob/grep 与新开的 bash）",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "要切换到的目录（相对当前目录或绝对路径）；省略则只报告当前目录"
+        }
+      },
+      "additionalProperties": false
+    },
+    "caps": {}
+  },
+  {
+    "name": "write",
+    "description": "新建或整体覆盖文件。覆盖已有文件前必须先 read。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "description": "文件路径（正斜杠，相对工作区根）"
+        },
+        "content": {
+          "type": "string",
+          "description": "完整文件内容"
+        }
+      },
+      "required": [
+        "file_path",
+        "content"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "writes": true
+    }
+  }
+]
